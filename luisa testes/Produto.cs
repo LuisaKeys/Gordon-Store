@@ -1,11 +1,10 @@
 using System;
 
-class HQ{
-  private string Nome;
-  private int Id;
-  private double Preco;
-  private int Edicao;
-  private string Estudio;
+class Produto{
+  protected string Nome;
+  protected int Id;
+  protected double Preco;
+  protected string Estudio;
   
   public string nome{
     get{
@@ -28,18 +27,34 @@ class HQ{
       if(value > 0)Preco = value;
     }
   }
-  public int edicao{
-    get{
-      return Edicao;
-    }set{
-      if(value > -1)Edicao = value;
-    }
-  }
   public string estudio{
     get{
       return Estudio;
     }set{
       if(value != null)Estudio = value;
+    }
+  }
+  
+}
+class Jogo:Produto{
+  public Jogo(string nome, int id, double preco){
+    this.nome = nome;
+    this.id = id;
+    this.preco = preco;
+    this.estudio = estudio;
+  }
+  public override string ToString() {
+    return $"{nome} - {id} - {preco} - {estudio}"; 
+  }
+}
+class HQ:Produto{
+  private int Edicao;
+
+  public int edicao{
+    get{
+      return Edicao;
+    }set{
+      if(value > -1)Edicao = value;
     }
   }
 
@@ -50,6 +65,7 @@ class HQ{
     this.edicao = edicao;
     this.estudio = estudio;
   }
+  
   public override string ToString() {
     return $"{nome} - {id} - {preco} - {edicao} - {estudio}";  
   }

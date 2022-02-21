@@ -17,7 +17,7 @@ public void SetNome(string a){
 public void SetPreço(double a){
     Preço = a;
   }
-public void SetPublicadora(string a){
+public void SetPubli(string a){
     Publicadora = a;
   }
 public void Setid(int a){

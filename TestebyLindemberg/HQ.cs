@@ -31,10 +31,10 @@ public void SetEdiçao(int a){
   public int GetEdiçao(){
     return Ediçao;
   }
-public void SetPublicadora(string a){
+public void SetPubli(string a){
     if(a != null) Publicadora = a;
   }
-  public string GePublicadoraNome(){
+  public string GetPubli(){
     return Publicadora;
   }
 public void Setid(int a){
