@@ -9,7 +9,7 @@ class HQ{
   public HQ(string nome,double preço,int ediçao,string publi,int id){
     if(nome != null) Nome = nome;
     if(preço > 0) Preço = preço;
-    if(ediçao > -1) Ediçao = ediçao;
+    if(ediçao >= 1) Ediçao = ediçao;
     if(publi != null) Publicadora = publi;
     if(id >= 1) this.id = id;
   }
