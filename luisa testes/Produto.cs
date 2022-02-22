@@ -83,4 +83,4 @@ class HQ:Produto//oq você ta fazendo aqui?
   public override string ToString() {
     return $"{nome} - {id} - {preco} - {edicao} - {estudio}";  
   }
-}//me ensina c# depois, to precisando, não to entendo quase nada disso aqui
+}
