@@ -1,10 +1,11 @@
 using System;
 
 class Produto{
-  protected string Nome;
+  protected string Nome;//oq seria o protected?
   protected int Id;
   protected double Preco;
   protected string Estudio;
+  protected int Qtd;
   
   public string nome{
     get{
@@ -34,7 +35,26 @@ class Produto{
       if(value != null)Estudio = value;
     }
   }
-  
+  public string qtd{
+    get{
+      return Qtd;
+    }set{
+      if(value <= 0) Qtd = 0;
+      else{
+        value = Qtd;  
+      }
+    }
+  }
+  public Produto(string nome, int id, double preco, string estudio, int qtd){
+    this.nome = nome;
+    this.id = id;
+    this.preco = preco;
+    this.estudio = estudio;
+    this.qtd = qtd;
+  }
+  public override string ToString() {
+    return $"{nome} - {id} - {preco} - {estudio} - {qtd}"; 
+  }
 }
 class Jogo:Produto{
   public Jogo(string nome, int id, double preco){
@@ -43,11 +63,9 @@ class Jogo:Produto{
     this.preco = preco;
     this.estudio = estudio;
   }
-  public override string ToString() {
-    return $"{nome} - {id} - {preco} - {estudio}"; 
-  }
 }
-class HQ:Produto{
+class HQ:Produto//oq você ta fazendo aqui?
+  {
   private int Edicao;
 
   public int edicao{
@@ -58,15 +76,11 @@ class HQ:Produto{
     }
   }
 
-  public HQ(string nome, int id, double preco){
-    this.nome = nome;
-    this.id = id;
-    this.preco = preco;
+  public HQ(string nome, int id, double preco, string estudio):base(nome, id, preco, estudio){
     this.edicao = edicao;
-    this.estudio = estudio;
   }
   
   public override string ToString() {
     return $"{nome} - {id} - {preco} - {edicao} - {estudio}";  
   }
-}
+}//me ensina c# depois, to precisando, não to entendo quase nada disso aqui

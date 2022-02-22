@@ -4,35 +4,34 @@ class Jogo{
   private string Nome;
   private double Preço;
   private string Publicadora;
-  private int id;
-  public Jogo(string nome, double preço,string publi, int id){
-    if(nome != null) Nome = nome;
-    if(preço > 0) Preço = preço;
-    if(publi != null) Publicadora = publi;
-    if(id > 0) this.id = id;
-  }
-public void SetNome(string a){
-    Nome = a;
-  }
-public void SetPreço(double a){
-    Preço = a;
-  }
-public void SetPubli(string a){
-    Publicadora = a;
-  }
-public void Setid(int a){
-    id = a;
-  }
-public string GetNome(string a){
-    return Nome;
-  }
-public double GetPreço(double a){
-    return Preço;
-  }
-public string GetPublicadora(string a){
-   return Publicadora;
-  }
-public int Getid(int a){
-    return id;
-  }
+  private int ID;
+public string nome{
+  set{if(value != null)Nome = value;}
+  get{return Nome;}
 }
+public double preço{
+  set{if(value > 0)Preço = value;}
+  get{return Preço;}
+}
+public string publi{
+  set{if(value != null)Publicadora = value;}
+  get{return Publicadora;}
+}
+public int id{
+  set{if(value > 0) ID = value;}
+  get{return ID;}
+}
+public Jogo(string a, double b, string c, int d){
+  if(a != null)Nome = a;
+  if(b > 0)Preço = b;
+  if(c != null)Publicadora = c;
+  if(d > 0) ID = d;
+}
+public override string ToString(){
+  return $"{Nome}-{Preço}-{Publicadora}-{id}";
+}
+}
+//ANOTAÇÔES
+/*
+-Colocar o construtor depois dos get/set funciona
+*/

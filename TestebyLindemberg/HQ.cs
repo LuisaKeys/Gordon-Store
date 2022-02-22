@@ -5,42 +5,35 @@ class HQ{
   private double Preço;
   private int Ediçao;
   private string Publicadora;
-  private int id;
+  private int ID;
+  public string nome{
+  set{if(value != null)Nome = value;}
+  get{return Nome;}
+}
+public double preço{
+  set{if(value > 0)Preço = value;}
+  get{return Preço;}
+}
+public string publi{
+  set{if(value != null)Publicadora = value;}
+  get{return Publicadora;}
+}
+public int id{
+  set{if(value > 0) ID = value;}
+  get{return ID;}
+}
+public int ediçao{
+  set{if(value >= 1) Ediçao = value;}
+  get{return Ediçao;}
+}
+public override string ToString(){
+  return $"{Nome}-{Preço}-{Ediçao}-{Publicadora}-{id}";
+}
   public HQ(string nome,double preço,int ediçao,string publi,int id){
     if(nome != null) Nome = nome;
     if(preço > 0) Preço = preço;
     if(ediçao >= 1) Ediçao = ediçao;
     if(publi != null) Publicadora = publi;
     if(id >= 1) this.id = id;
-  }
-  public void SetNome(string a){
-    if(a != null) Nome = a;
-  }
-  public string GetNome(){
-    return Nome;
-  }
-public void SetPreço(double a){
-    if(a > 0) Preço = a;
-  }
-  public double GetPreço(){
-    return Preço;
-  }
-public void SetEdiçao(int a){
-    if(a > -1) Ediçao = a;
-  }
-  public int GetEdiçao(){
-    return Ediçao;
-  }
-public void SetPubli(string a){
-    if(a != null) Publicadora = a;
-  }
-  public string GetPubli(){
-    return Publicadora;
-  }
-public void Setid(int a){
-    if(a > 0) id = a;
-  }
-  public int Getid(){
-    return id;
   }
 }
