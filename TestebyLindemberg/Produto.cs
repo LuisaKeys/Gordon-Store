@@ -37,7 +37,7 @@ public override string ToString(){
   return $"{Nome}-{Preço}-{Publi}-{Quantidade}";
 }
 }
-class Jogo: Produto{
+class Jogo:Produto{
   public Jogo(string a,double b,string c,int d,int e):base (a,b,c,d,e){}}
 class HQ:Produto{
   private int Ediçao;

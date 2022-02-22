@@ -3,12 +3,12 @@ class Carrinho{
   private Produto[] prod = new Produto[100];
   int index=0;
 
-  public void Inserir(Produto p){
+  public void InserirCarrinho(Produto p){
     if(index<100){
       prod[index] = p;
       index++;
   }
-  public Produto[] Listar(){ //JESUS QUE RAIVA NUM COMPILA AAAAAAA
+  public Produto[] ListarCarrinho(){
     Produto[] aux = new Produto[qtd];
     Array.Copy(prod, aux, qtd);
     return aux;
