@@ -64,7 +64,7 @@ class Jogo:Produto{
     this.estudio = estudio;
   }
 }
-class HQ:Produto//oq você ta fazendo aqui?
+class HQ:Produto//oq você ta fazendo aqui?(eu entendi que você ta criando um produto do tipo HQ, é isso?)
   {
   private int Edicao;
 
