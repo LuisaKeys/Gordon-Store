@@ -1,7 +1,7 @@
 using System;
 
 class Produto{
-  protected string Nome;//oq seria o protected?
+  protected string Nome;
   protected int Id;
   protected double Preco;
   protected string Estudio;
@@ -64,8 +64,8 @@ class Jogo:Produto{
     this.estudio = estudio;
   }
 }
-class HQ:Produto//oq você ta fazendo aqui?(eu entendi que você ta criando um produto do tipo HQ, é isso?)
-  {
+class HQ:Produto
+  { 
   private int Edicao;
 
   public int edicao{

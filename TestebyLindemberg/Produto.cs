@@ -1,23 +1,54 @@
 using System;
 
 class Produto{
-  private string descrição;
-  private int id;
-  public Produto(string a,int d){
-    if(a != null) descrição =  a;
-    if(d > 0) id = d;
+  protected string Nome;
+  protected double Preço;
+  protected string Publi;
+  protected int ID;
+  protected int Quantidade;
+  public string nome{
+    set{if(value != null) Nome = value;}
+    get{return Nome;}  
   }
-  public void SetDesc(string a){
-    descrição = a;
+  public double preço{
+    set{if(value > 0) Preço = value;}
+    get{return Preço;}  
   }
-  public string GetDesc(){
-    return descrição;
+  public string publi{
+    set{if(value != null) Publi = value;}
+    get{return Publi;}  
   }
-public void Setid(string a){
-    id = a;
+  public int id{
+    set{if(value > 0) ID = value;}
+    get{return ID;}  
   }
-  public string Getid(){
-    return id;
+  public int qtd{
+    set{if(value > 0) Quantidade = value;}
+    get{return Quantidade;}
   }
+  public Produto(string a, double b, string c,int d, int e){
+    if(a != null) Nome = a;
+    if(b > 0) Preço = b;
+    if(c != null) Publi = c;
+    if(d > 0) ID = d;
+    if(e > 0) Quantidade = e;
+  }
+public override string ToString(){
+  return $"{Nome}-{Preço}-{Publi}-{Quantidade}";
+}
+}
+class Jogo: Produto{
+  public Jogo(string a,double b,string c,int d,int e):base (a,b,c,d,e){}}
+class HQ:Produto{
+  private int Ediçao;
+  public HQ(string a, double b, string c,int d, int e,int f): base(a,b,c,d,e){
+    if(f >-1) ediçao = f;
+  }
+  public int ediçao{
+    get{return Ediçao;}
+    set{if(value > -1) Ediçao = value;}  
+  }
+  public override string ToString(){
+    return $"{Nome}-{Preço}-{Publi}-{Ediçao}-{Quantidade}";
   }
 }
