@@ -3,13 +3,19 @@ using System;
 class Program{
   static void Main(){
     int opcao = 0;
-    do{
-      opcao = Menu();
-      switch(opcao){
-        case 1 : MenuCliente();break;
-        case 2 : MenuAdm();break;
-      }
-    }while(opcao != 0);
+    try{
+      do{
+        opcao = Menu();
+        switch(opcao){
+          case 1 : MenuCliente();break;
+          case 2 : MenuAdm();break;
+        }
+      }while(opcao != 0);
+    }catch{
+      Console.WriteLine("Opção inválida.");
+    }
+
+    
 }
   public static int Menu(){
     Console.WriteLine();
@@ -34,11 +40,18 @@ class Program{
     Console.Write("Opção: ");
     int opcaoC = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    do{
-      switch(opcaoC){
-      case 1 : MetodoTeste();break;
-      }
-    }while(opcaoC != 0);
+    try{
+      do{
+        switch(opcaoC){
+          case 1 : MetodoTeste();break;
+          //case 1 : ProdutoListar();break;
+          //case 2 : CarrinhoInserir();break;
+          //case 3 : MenuCarrinho();break;
+        }
+      }while(opcaoC != 0);
+    }catch{
+      Console.WriteLine("Opção inválida.");
+    }
     return opcaoC;
   }
   public static int MenuAdm(){
@@ -47,21 +60,29 @@ class Program{
     Console.WriteLine("01 - Listar produtos.");
     Console.WriteLine("02 - Adicionar produto");
     Console.WriteLine("03 - Excluir produto");
-    Console.WriteLine("03 - Editar produto");
+    Console.WriteLine("04 - Editar produto");
     Console.WriteLine("00 - Finalizar programa.");
     Console.WriteLine("-----------------------------------");
     Console.Write("Opção: ");
     int opcaoA = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    do{
-      switch(opcaoA){
-      case 1 : MetodoTeste();break;
-      }
-    }while(opcaoA != 0);
+    try{
+      do{
+        switch(opcaoA){
+          case 1 : MetodoTeste();break;
+          //case 1 : ProdutoListar();break;
+          //case 2 : ProdutoInserir();break;
+          //case 3 : ProdutoExcluir();break;
+          //case 4 : ProdutoAtualizar();break;
+        }
+      }while(opcaoA != 0);
+    }catch{
+      Console.WriteLine("Opção inválida.");
+    }
     return opcaoA;
   }
   public static int MetodoTeste(){
     Console.WriteLine("RODOU!");
-    return -1;
+    return 0;
   }
 }

@@ -13,7 +13,7 @@ class program{
   }
 public static int MenuAdmin(){
   int escolha;
-  try{
+  bool error = false;
   do{
     Console.WriteLine("--Bem-Vindo ao menu de Administrador--");
       Console.WriteLine("1-Inserir Produto");
@@ -22,21 +22,41 @@ public static int MenuAdmin(){
       Console.WriteLine("4-Sair");
       Console.WriteLine("--------------------");
       Console.WriteLine("escolha uma opção:");
+      try{
+      error = true;
       escolha = int.Parse(Console.ReadLine());
       switch(escolha){
         case 1: Console.WriteLine("Teste"); break;
         case 2: Console.WriteLine("Teste"); break;
         case 3: Console.WriteLine("Teste"); break;
-        case 4: escolha = 0; break; 
+        case 4: error = false; break;
       }
-  } while(escolha != 0);
-}
-catch(Exception obj){
+    }
+   catch(Exception obj){
   Console.WriteLine(obj.Message);
-}
+   }
+  } while(error);
   return 0;
 }
 public static int MenuCliente(){
+  int conta;
+    Console.WriteLine("--Bem-Vindo(a) a Loja Gordon Store, a melhor loja nerd do mercado--");
+      Console.WriteLine("Antes de continuarmos considere logar apertando 1");
+    Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
+    Console.WriteLine("--------------------------------");
+    Console.Write("Qual sua opção:");                
+    conta = int.Parse(Console.ReadLine());
+    if(conta == 1){
+      Console.WriteLine(login());
+    }
+  return 0;
+}
+public static int login(){
+  Console.Write("Nome:");
+      Console.WriteLine();
+      Console.Write("Senha:");
+      Console.WriteLine();
+      Console.WriteLine("--------------------");
   return 0;
 }
 }
