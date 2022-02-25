@@ -2,7 +2,7 @@ using System;
 
 class Produto{
   protected string Nome;
-  protected int Id;
+  protected static int Id;
   protected double Preco;
   protected string Estudio;
   protected int Qtd;
@@ -35,7 +35,7 @@ class Produto{
       if(value != null)Estudio = value;
     }
   }
-  public string qtd{
+  public int qtd{
     get{
       return Qtd;
     }set{
@@ -57,11 +57,12 @@ class Produto{
   }
 }
 class Jogo:Produto{
-  public Jogo(string nome, int id, double preco){
+  public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
     this.nome = nome;
     this.id = id;
     this.preco = preco;
     this.estudio = estudio;
+    this.qtd = qtd;
   }
 }
 class HQ:Produto
@@ -76,8 +77,13 @@ class HQ:Produto
     }
   }
 
-  public HQ(string nome, int id, double preco, string estudio):base(nome, id, preco, estudio){
+  public HQ(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
     this.edicao = edicao;
+    this.nome = nome;
+    this.id = id;
+    this.preco = preco;
+    this.estudio = estudio;
+    this.qtd = qtd;
   }
   
   public override string ToString() {

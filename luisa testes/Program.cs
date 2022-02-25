@@ -32,9 +32,14 @@ class Program{
     Console.WriteLine("00 - Finalizar programa.");
     Console.WriteLine("-----------------------------------");
     Console.Write("Opção: ");
-    int opcao = int.Parse(Console.ReadLine());
+    int opcaoC = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    return opcao;
+    do{
+      switch(opcaoC){
+      case 1 : MetodoTeste();break;
+      }
+    }while(opcaoC != 0);
+    return opcaoC;
   }
   public static int MenuAdm(){
     Console.WriteLine();
@@ -46,8 +51,17 @@ class Program{
     Console.WriteLine("00 - Finalizar programa.");
     Console.WriteLine("-----------------------------------");
     Console.Write("Opção: ");
-    int opcao = int.Parse(Console.ReadLine());
+    int opcaoA = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    return opcao;
+    do{
+      switch(opcaoA){
+      case 1 : MetodoTeste();break;
+      }
+    }while(opcaoA != 0);
+    return opcaoA;
+  }
+  public static int MetodoTeste(){
+    Console.WriteLine("RODOU!");
+    return -1;
   }
 }

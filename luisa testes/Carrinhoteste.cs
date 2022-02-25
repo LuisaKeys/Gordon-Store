@@ -1,23 +1,24 @@
-using System;
+using System; 
+using System.Collections.Generic;
+//resolvi um erro e criei outro, agr num quer acessar a classe Produto esse codigo fuleiro
 class Carrinho{
-  private Produto[] prod = new Produto[100];
-  int index=0;
-
-  public void InserirCarrinho(Produto p){
-    if(index<100){
-      prod[index] = p;
-      index++;
+  private static List<Produto> prodc = new List<Produto>();
+  public static void CarrinhoInserir(Produto obj) {
+    prodc.Add(obj);
   }
-  public Produto[] ListarCarrinho(){
-    Produto[] aux = new Produto[qtd];
-    Array.Copy(prod, aux, qtd);
-    return aux;
-  }
-  public double Somar(){
-    double soma=0;
-    for (int i=0; i<index; i++){
-       s += prod[i].preco() * prod[i].qtd();
+  public static List<Produto> CarrinhoListar(int id) {
+    foreach(Produto obj in prodc){
+      if(obj != null && obj.id == id) return obj;
     }
-    return soma;
+    return null;
+  }
+  public static void CarrinhoExcluir(Produto obj) {
+    Produto aux = CarrinhoListar(obj.id);
+    if (aux != null){
+       prodc.Remove(aux); 
+    }
+  }
+  public static int CarrinhoSoma(){
+    return 1;
   }
 }
