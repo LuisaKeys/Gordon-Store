@@ -1,6 +1,7 @@
 using System; 
 using System.Collections.Generic;
 //resolvi um erro e criei outro, agr num quer acessar a classe Produto esse codigo fuleiro
+//kkkkkkkk bem vinda a programação, você não está sozinha
 class Carrinho{
   private static List<Produto> prodc = new List<Produto>();
   public static void CarrinhoInserir(Produto obj) {
