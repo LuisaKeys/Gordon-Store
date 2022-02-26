@@ -49,15 +49,30 @@ public static int MenuCliente(){
     if(conta == 1){
       Console.WriteLine(login());
     }
+    if(conta == 2){
+      Console.WriteLine(Cadastro());
+    }
   return 0;
 }
 public static int login(){
-  Console.Write("Nome:");
+      Console.WriteLine("--------------------");
+      Console.Write("Nome:");
       Console.WriteLine();
       Console.Write("Senha:");
       Console.WriteLine();
       Console.WriteLine("--------------------");
   return 0;
+}
+public static int Cadastro(){
+  Console.WriteLine("--Bem-Vindo(a) ao cadastro--");
+      Console.Write("Coloque o nome que você quer:");
+      string nome = Console.ReadLine();
+      Console.WriteLine();
+      Console.Write("Agora coloque a senha que você deseja:");
+      string senha = Console.ReadLine();
+      Console.WriteLine();
+      Console.WriteLine("--------------------");
+      return 0;
 }
 }
 //Amanha faço mais coisa, não acredito que tive que reescrever um bloco de comando inteiro por causa de um bug, programação é tão divertido
