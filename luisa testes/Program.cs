@@ -126,15 +126,82 @@ class Program{
 
 //produto
   public static void ProdutoInserir(){
-    return null;
+    Console.WriteLine("----- Inserindo produto -----");
+    Console.Write("Digite o id do produto: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.WriteLine("Escolha o produto que deseja inserir: ");
+    Console.WriteLine("1 - Jogo");
+    Console.WriteLine("2 - HQ");
+    Console.Write("Opção: ");
+    int opcao = int.Parse(Console.ReadLine());
+    switch(opcao){
+      case 1 :
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+        Console.Write("Preço: ");
+        double preco = double.Parse(Console.ReadLine());
+        Console.Write("Estúdio: ");
+        string estudio = Console.ReadLine();
+        Console.Write("Quantidade: ");
+        int qtd = int.Parse(Console.ReadLine());
+        Jogo obj = new Jogo(nome, id, preco, estudio, qtd);
+        Sistema.ProdutoInserir();
+        break;
+      case 2 : 
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+        Console.Write("Preço: ");
+        double preco = double.Parse(Console.ReadLine());
+        Console.Write("Edição: ");
+        int edicao = int.Parse(Console.ReadLine());
+        Console.Write("Estúdio: ");
+        string estudio = Console.ReadLine();
+        Console.Write("Quantidade: ");
+        int qtd = int.Parse(Console.ReadLine());
+        HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
+        Sistema.ProdutoInserir();
+        break;
+    }
+    Console.WriteLine("------------------------");
   }
-  public static void ProdutoListar(){
-    return null;
+  public static void ProdutoAtualizar() {
+    Console.WriteLine("----- Editando produto -----");
+    Console.Write("Informe o id do produto a ser atualizado: ");
+    int id = int.Parse(Console.ReadLine());
+    switch(id){
+      case 1 :
+        Console.Write("Insira o novo nome: ");
+        string nome = Console.ReadLine();
+        Console.Write("Insira o novo preço: ");
+        double preco = double.Parse(Console.ReadLine());
+        Console.Write("Insira o estúdio: ");
+        string estudio = Console.ReadLine();
+        Console.Write("Atualize a quantidade: ");
+        int qtd = int.Parse(Console.ReadLine());
+        Jogo obj = new Jogo(nome, id, preco, estudio, qtd);
+        break;
+      case 2 :
+        Console.Write("Insira o novo nome: ");
+        string nome = Console.ReadLine();
+        Console.Write("Insira o novo preço: ");
+        double preco = double.Parse(Console.ReadLine());
+        Console.Write("Insira a nova edição: ");
+        int edicao = int.Parse(Console.ReadLine());
+        Console.Write("Insira o estúdio: ");
+        string estudio = Console.ReadLine();
+        Console.Write("Atualize a quantidade: ");
+        int qtd = int.Parse(Console.ReadLine());
+        HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
+        break;
+    }
+    Console.WriteLine("------------------------");
+    Produto obj =  new Produto();
+    Sistema.ProdutoAtualizar(obj);
   }
-  public static void ProdutoAtualizar(){
-    return null;
-  }
-  public static void ProdutoExcluir(){
-    return null;
-  }
+  public static void ProdutoExcluir() {
+    Console.WriteLine("----- Excluindo produto -----");
+    Console.Write("Informe o nome do produto a ser excluído: ");
+    string nome = Console.ReadLine();
+    Produto obj =  new Produto(nome);
+    Sistema.ProdutoExcluir(obj);
 }

@@ -77,7 +77,7 @@ class HQ:Produto
     }
   }
 
-  public HQ(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
+  public HQ(string nome, int id, double preco, int edicao, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
     this.edicao = edicao;
     this.nome = nome;
     this.id = id;
