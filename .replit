@@ -1,4 +1,4 @@
 language = "bash"
-run = "mcs -out:main.exe 'TestebyLindemberg/main.cs' 'TestebyLindemberg/sistema.cs' 'TestebyLindemberg/Produto.cs'; mono main.exe"
+run = "mcs -out:main.exe 'TestebyLindemberg/Produto.cs' 'TestebyLindemberg/main.cs' 'TestebyLindemberg/sistema.cs'; mono main.exe"
 
 

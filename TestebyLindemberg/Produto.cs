@@ -36,7 +36,7 @@ class Produto{
     if(e > 0) Quantidade = e;
   }
 public override string ToString(){
-  return $"{Nome}-{Preço}-{Publi}-{Quantidade}";
+  return $"--Jogo de ID:{ID}--"+ "\n"+$"Nome:{Nome}"+ "\n"+$"Preço:R${Preço}"+ "\n"+$"Estúdio:{Publi}"+ "\n"+$"Quantidade no estoque:{Quantidade}";
 }
 }
 class Jogo:Produto{
@@ -51,6 +51,6 @@ class HQ:Produto{
     set{if(value > -1) Ediçao = value;}  
   }
   public override string ToString(){
-    return $"{Nome}-{Preço}-{Publi}-{Ediçao}-{Quantidade}";
+    return $"--HQ de ID:{ID}--"+ "\n"+$"Nome:{Nome}"+ "\n"+$"Preço:R${Preço}"+ "\n"+$"Estúdio:{Publi}"+ "\n"+$"Edição{Ediçao}" + "\n"+$"Quantidade no estoque:{Quantidade}";
   }
 }

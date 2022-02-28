@@ -22,9 +22,10 @@ class program{
       Console.WriteLine(a[0].nome);
       Console.WriteLine((a[1] as HQ).ediçao);
       //DEU CERTO CARALHOOOOOOOOOOOOOOO
+      //KKKKKKKKKKKKKKKKK vitória pro reino de Deus!!!
     }
   }
-public static int MenuAdmin(){
+public static void MenuAdmin(){
   int escolha;
   bool error = false;
   do{
@@ -39,9 +40,9 @@ public static int MenuAdmin(){
       error = true;
       escolha = int.Parse(Console.ReadLine());
       switch(escolha){
-        case 1: Console.WriteLine(InserirPro()); break;
-        case 2: Console.WriteLine("Teste"); break;
-        case 3: Console.WriteLine("Teste"); break;
+        case 1: InserirPro(); break;
+        case 2: Console.WriteLine("teste"); break;
+        case 3: Listar(); break;
         case 4: error = false; break;
       }
     }
@@ -49,13 +50,19 @@ public static int MenuAdmin(){
   Console.WriteLine(obj.Message);
    }
   } while(error);
-  return 0;
 }
-public static int InserirPro(){
+public static void Listar(){
+  Console.WriteLine("--Lista dos Produtos Inseridos--");
+  foreach(Produto b in Sistema.ListarProdutos()){
+    Console.WriteLine(b.ToString());
+  }
+  Console.WriteLine("--------------------");
+}
+public static void InserirPro(){
   Console.WriteLine("--------------------");
   Console.Write("Defina um id para o produto:");
   int id = int.Parse(Console.ReadLine());
-  Console.WriteLine("Que tipo de produto gostaria de inserir?(Escreva a opação desejada)");
+  Console.WriteLine("Que tipo de produto gostaria de inserir?(Escreva a opção desejada)");
   Console.WriteLine("1- Jogo");
   Console.WriteLine("2- HQ");
   Console.Write("opção escolhida:");
@@ -66,9 +73,11 @@ public static int InserirPro(){
     Console.Write("Preço:");
     double preço = double.Parse(Console.ReadLine());
     Console.Write("Estúdio:");
-    string estudio = Console.ReadLine();
+    string estudio = Console.ReadLine(); 
     Console.Write("Quantidade:");
     int qtd = int.Parse(Console.ReadLine());
+    Jogo joguin = new Jogo(nome, preço, estudio, id, qtd);
+    Sistema.InserirJogo(joguin);
   }
   if (escolha == 2){
       Console.Write("Nome:");
@@ -81,14 +90,16 @@ public static int InserirPro(){
       string estudio = Console.ReadLine();
       Console.Write("Quantidade:");
       int qtd = int.Parse(Console.ReadLine());
+      HQ quadrin = new HQ(nome, preço, estudio, id, qtd, ediçao);
+      Sistema.InserirHQ(quadrin);
     }
-  return 0;
+  Console.WriteLine("--------------------");
 }
 
   
 //Parte do cliente
 public static int MenuCliente(){
-  int conta;
+  /*int conta;
     Console.WriteLine("--Bem-Vindo(a) a Loja Gordon Store, a melhor loja nerd do mercado--");
       Console.WriteLine("Antes de continuarmos considere logar apertando 1");
     Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
@@ -120,7 +131,7 @@ public static int Cadastro(){
       Console.Write("Agora coloque a senha que você deseja:");
       string senha = Console.ReadLine();
       Console.WriteLine();
-      Console.WriteLine("--------------------");
+      Console.WriteLine("--------------------");*/
       return 0;
 }
 }
