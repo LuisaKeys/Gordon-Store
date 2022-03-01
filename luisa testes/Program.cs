@@ -177,7 +177,7 @@ class Program{
     int id = int.Parse(Console.ReadLine());
     switch(id){
       case 1 :
-        Console.Write("Insira o novo nome: ");
+        Console.Write("Insira o nome: ");
         string nome = Console.ReadLine();
         Console.Write("Insira o novo preço: ");
         double preco = double.Parse(Console.ReadLine());
@@ -188,7 +188,7 @@ class Program{
         Jogo obj = new Jogo(nome, id, preco, estudio, qtd);
         break;
       case 2 :
-        Console.Write("Insira o novo nome: ");
+        Console.Write("Insira o nome: ");
         string nome = Console.ReadLine();
         Console.Write("Insira o novo preço: ");
         double preco = double.Parse(Console.ReadLine());

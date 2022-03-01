@@ -51,6 +51,6 @@ class HQ:Produto{
     set{if(value > -1) Ediçao = value;}  
   }
   public override string ToString(){
-    return $"--HQ de ID:{ID}--"+ "\n"+$"Nome:{Nome}"+ "\n"+$"Preço:R${Preço}"+ "\n"+$"Estúdio:{Publi}"+ "\n"+$"Edição{Ediçao}" + "\n"+$"Quantidade no estoque:{Quantidade}";
+    return $"--HQ de ID:{ID}--"+ "\n"+$"Nome:{Nome}"+ "\n"+$"Preço:R${Preço}"+ "\n"+$"Estúdio:{Publi}"+ "\n"+$"Edição:{Ediçao}" + "\n"+$"Quantidade no estoque:{Quantidade}";
   }
 }

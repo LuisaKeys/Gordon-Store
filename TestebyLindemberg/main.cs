@@ -21,8 +21,7 @@ class program{
       a[1] = c;
       Console.WriteLine(a[0].nome);
       Console.WriteLine((a[1] as HQ).ediçao);
-      //DEU CERTO CARALHOOOOOOOOOOOOOOO
-      //KKKKKKKKKKKKKKKKK vitória pro reino de Deus!!!
+
     }
   }
 public static void MenuAdmin(){
@@ -33,7 +32,8 @@ public static void MenuAdmin(){
       Console.WriteLine("1-Inserir Produto");
       Console.WriteLine("2-Retirar Produto");
       Console.WriteLine("3-Listar Produtos");
-      Console.WriteLine("4-Sair");
+      Console.WriteLine("4-Atualizar Produto");
+      Console.WriteLine("5-Sair");
       Console.WriteLine("--------------------");
       Console.WriteLine("escolha uma opção:");
       try{
@@ -41,15 +41,70 @@ public static void MenuAdmin(){
       escolha = int.Parse(Console.ReadLine());
       switch(escolha){
         case 1: InserirPro(); break;
-        case 2: Console.WriteLine("teste"); break;
+        case 2: excluir(); break;
         case 3: Listar(); break;
-        case 4: error = false; break;
+        case 4: atualizar(); break;
+        case 5: error = false; break;
       }
     }
    catch(Exception obj){
   Console.WriteLine(obj.Message);
    }
   } while(error);
+}
+public static void atualizar(){
+  int atualização;
+  Console.WriteLine("-------------------");
+  Console.Write("Informe o id do produto que deseja atualizar:");
+  int mudança = int.Parse(Console.ReadLine());
+  Produto escolhido = Sistema.Atualização(mudança);
+  if(escolhido is Jogo){
+  Console.WriteLine("Oque deseja mudar:");
+  Console.WriteLine("1 - Nome");
+  Console.WriteLine("2 - Preço");
+  Console.WriteLine("3 - Estúdio");
+  Console.WriteLine("4 - Quantidade");
+  Console.Write("Opção escolhida:");
+  atualização = int.Parse(Console.ReadLine());
+    switch(atualização){
+      case 1: Console.Write("Digite o nome:");escolhido.nome = Console.ReadLine(); break;
+      case 2: Console.Write("Digite o preço:");escolhido.preço = double.Parse(Console.ReadLine()); break;
+      case 3: Console.Write("Digite o Estúdio:");escolhido.publi = Console.ReadLine(); break;
+      case 4: Console.Write("Digite a Quantidade:");escolhido.qtd = int.Parse(Console.ReadLine()); break;
+    }
+  }
+  if(escolhido is HQ){
+  Console.WriteLine("Oque deseja mudar:");
+  Console.WriteLine("1 - Nome");
+  Console.WriteLine("2 - Preço");
+  Console.WriteLine("3 - Estúdio");
+  Console.WriteLine("4 - Quantidade");
+  Console.WriteLine("5 - Edição");
+  Console.Write("Opção escolhida:");
+  atualização = int.Parse(Console.ReadLine());
+    switch(atualização){
+      case 1: Console.Write("Digite o nome:");escolhido.nome = Console.ReadLine(); break;
+      case 2: Console.Write("Digite o preço:");escolhido.preço = double.Parse(Console.ReadLine()); break;
+      case 3: Console.Write("Digite o Estúdio:");escolhido.publi = Console.ReadLine(); break;
+      case 4: Console.Write("Digite a Quantidade:");escolhido.qtd = int.Parse(Console.ReadLine()); break;
+      case 5: Console.Write("Digite a edição:");(escolhido as HQ).ediçao = int.Parse(Console.ReadLine()); break;
+    }
+  }
+}
+public static void excluir(){
+  Console.WriteLine("-------------------");
+  Console.Write("Que tipo de produto deseja excluir(1 HQ - 2 Jogo):");
+  int escolha = int.Parse(Console.ReadLine());
+  Console.Write("Qual o id do produto que deseja excluir:");
+  int id = int.Parse(Console.ReadLine());
+  if(escolha == 1){
+    HQ excluído = new HQ("", 0, "", id, 0, 0);
+    Sistema.RetirarProduto(excluído);
+  }
+  if(escolha == 2){
+    Jogo excluido = new Jogo("", 0, "", id, 0);
+    Sistema.RetirarProduto(excluido);
+  }
 }
 public static void Listar(){
   Console.WriteLine("--Lista dos Produtos Inseridos--");

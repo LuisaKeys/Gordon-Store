@@ -1,6 +1,9 @@
 using System; 
 using System.Collections.Generic;
-
+using System.Linq;
+//Luísa, o replit escreva do nada no sua execução? porque no meu ta acontecendo isso
+// como e homi KKKKKKKKKKKK
+//perai
 class Carrinho{
   private static List<Produto> prodc = new List<Produto>();
   
@@ -19,7 +22,7 @@ class Carrinho{
        prodc.Remove(aux); 
     }
   }
-  public static int CarrinhoSomar(){
+  public static double CarrinhoSomar(){
     double soma = prodc.Sum();
     return soma;
   }
