@@ -1,16 +1,15 @@
 using System; 
 using System.Collections.Generic;
-//resolvi um erro e criei outro, agr num quer acessar a classe Produto esse codigo fuleiro
-// você não está sozinha
-// KKKKKKKKKKKKKKKKKKKK
+
 class Carrinho{
   private static List<Produto> prodc = new List<Produto>();
+  
   public static void CarrinhoInserir(Produto obj) {
     prodc.Add(obj);
   }
-  public static List<Produto> CarrinhoListar(int id) {
+  public static List<Produto> CarrinhoListar(string nome) {
     foreach(Produto obj in prodc){
-      if(obj != null && obj.id == id) return obj;
+      if(obj != null && obj.nome == nome) return nome;
     }
     return null;
   }
@@ -20,7 +19,8 @@ class Carrinho{
        prodc.Remove(aux); 
     }
   }
-  public static int CarrinhoSoma(){
-    return 1;
+  public static int CarrinhoSomar(){
+    double soma = prodc.Sum();
+    return soma;
   }
 }

@@ -20,6 +20,11 @@ class Sistema{
     w[qtd] = obj;
     qtd++;
   }
+  public static void RetirarProduto(int a){
+    foreach(Produto i in w){
+      if(a == i.id)Console.WriteLine("teste");
+    }
+  }
   public static Produto[] ListarProdutos(){
     Produto[] auxiliar = new Produto[qtd];
     Array.Copy(w, auxiliar, qtd);

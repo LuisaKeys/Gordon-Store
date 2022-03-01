@@ -71,9 +71,9 @@ class Program{
         switch(opcaoA){
           case 1 : MetodoTeste();break;
           //case 1 : ProdutoListar();break;
-          //case 2 : ProdutoInserir();break;
-          //case 3 : ProdutoExcluir();break;
-          //case 4 : ProdutoAtualizar();break;
+          case 2 : ProdutoInserir();break;
+          case 3 : ProdutoExcluir();break;
+          case 4 : ProdutoAtualizar();break;
         }
       }while(opcaoA != 0);
     }catch{
@@ -115,15 +115,22 @@ class Program{
 
   //carrinho
   public static void CarrinhoInserir(){
-    return null;
+    Console.WriteLine("-- Inserindo produto ao carrinho --");
+    Console.Write("-- Informe o nome do produto que deseja inserir: ");
+    string nome = Console.ReadLine();
+    Carrinho obj =  new Carrinho(nome);
+    Carrinho.CarrinhoInserir();
   }
   public static void CarrinhoListar(){
-    return null;
+    Carrinho.CarrinhoListar();
   }
   public static void CarrinhoExcluir(){
-    return null;
+    Console.WriteLine("-- Excluindo produto do carrinho --");
+    Console.Write("-- Informe o nome do produto que deseja excluir: ");
+    string nome = Console.ReadLine();
+    Carrinho obj = new Carrinho(nome);
+    Carrinho.CarrinhoExcluir();
   }
-
 //produto
   public static void ProdutoInserir(){
     Console.WriteLine("----- Inserindo produto -----");
