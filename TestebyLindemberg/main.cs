@@ -154,7 +154,7 @@ public static void InserirPro(){
   
 //Parte do cliente
 public static int MenuCliente(){
-  /*int conta;
+  int conta;
     Console.WriteLine("--Bem-Vindo(a) a Loja Gordon Store, a melhor loja nerd do mercado--");
       Console.WriteLine("Antes de continuarmos considere logar apertando 1");
     Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
@@ -176,10 +176,65 @@ public static int login(){
       Console.Write("Senha:");
       Console.WriteLine();
       Console.WriteLine("--------------------");
+      Console.WriteLine("aperte 1 para logar como convidado");
+      int convidado = int.Parse(Console.ReadLine());
+      if(convidado == 1){
+        Console.WriteLine(Realmenudocliente());
+      }
   return 0;
 }
+public static int  Realmenudocliente(){
+  int escolha;
+  bool error = false;
+  do{
+  Console.WriteLine("--Bem-Vindo(a) caro cliente, ao Gordon Store, a maior loja geek do mercado--");
+  Console.WriteLine("Escolha a opção que deseja fazer:");
+  Console.WriteLine("1 - Olhar os Produtos na loja");
+  Console.WriteLine("2 - Adicionar o Produto ao carrinho");
+  Console.WriteLine("3 - Retirar Produto do carrinho");
+  Console.WriteLine("4 - Ver o valor total a pagar");
+  Console.WriteLine("5 - Finalizar compra");
+  Console.WriteLine("6 - Finalizar programa(Você não está em uma matrix)");
+  Console.Write("Opção escolhida:");
+  try{
+  error = true;  
+  escolha = int.Parse(Console.ReadLine());
+  Console.WriteLine("---------------------------");
+  switch(escolha){
+    case 1: Loja(); break;
+    case 2: Console.WriteLine("teste"); break;
+    case 3: Console.WriteLine("teste"); break;
+    case 4: Console.WriteLine("teste"); break;
+    case 5: Console.WriteLine("teste"); break;
+    case 6: error = false; break;
+  }
+  }
+  catch(Exception obj){
+    Console.WriteLine(obj.Message);
+  }
+  }while(error);
+  return 0;
+}
+public static void Loja(){
+  Console.WriteLine("Esse são os produtos oferecidos:");
+  foreach(Produto obj in Sistema.ListarProdutos()){
+    if(obj is Jogo){
+      Console.WriteLine("--{obj.nome}(Jogo)--");
+      Console.WriteLine("Estúdio:{obj.publi}");
+      Console.WriteLine("Preço:R${obj.preço}");
+      Console.WriteLine("Estoque:{obj.qtd}");
+    }
+    if(obj is HQ){
+      Console.WriteLine("--{obj.nome}(HQ)--");
+      Console.WriteLine("Estúdio:{obj.publi}");
+      Console.WriteLine("Edição:{(obj as HQ).ediçao}");
+      Console.WriteLine("Preço:R${obj.preço}");
+      Console.WriteLine("Estoque:{obj.qtd}");
+    }
+  }
+}
 public static int Cadastro(){
-  Console.WriteLine("--Bem-Vindo(a) ao cadastro--");
+  /*Console.WriteLine("--Bem-Vindo(a) ao cadastro--");
       Console.Write("Coloque o nome que você quer:");
       string nome = Console.ReadLine();
       Console.WriteLine();
@@ -191,3 +246,6 @@ public static int Cadastro(){
 }
 }
 //Amanha faço mais coisa, não acredito que tive que reescrever um bloco de comando inteiro por causa de um bug, programação é tão divertido
+// boa noite, conseguiu resolver os problemas??
+// qual problema??
+//vou sair um pouco agora, prometo fazer muito mais coisa amanha, flw e boa noite

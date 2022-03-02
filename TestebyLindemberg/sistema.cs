@@ -50,3 +50,4 @@ class Sistema{
     return auxiliar;
   }
 }// e eu vou terminar essa parte e seja oq deus quiser
+//qual parte? mas seja qual for, confio em você

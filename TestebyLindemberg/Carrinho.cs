@@ -2,6 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 class Carrinho{
-  private Produto[] car = new Produto[10];
+  private List<Produto> cesta = new List<Produto>();
   private int qtd = 0;
 }

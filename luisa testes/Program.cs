@@ -42,11 +42,10 @@ class Program{
     try{
       do{
         switch(opcaoC){
-          case 1 : MetodoTeste();break;
-          //case 1 : ProdutoListar();break;
-          //case 2 : CarrinhoInserir();break;
+          case 1 : ProdutoListar();break;
+          case 2 : CarrinhoInserir();break;
           case 3 : MenuCarrinho();break;
-          //case 4 : ProdutoPesquisar();break;
+          case 4 : ProdutoPesquisar();break;
         }
       }while(opcaoC != 0);
     }catch{
@@ -97,10 +96,10 @@ class Program{
       do{
         switch(opcaoC2){
           case 1 : MetodoTeste();break;
-          //case 1 : CarrinhoListar();break;
-          //case 2 : CarrinhoInserir();break;
-          //case 3 : CarrinhoExcluir();break;
-          //case 4 : Somar();break;
+          case 1 : CarrinhoListar();break;
+          case 2 : CarrinhoInserir();break;
+          case 3 : CarrinhoExcluir();break;
+          case 4 : Somar();break;
         }
       }while(opcaoC2 != 0);
     }catch{
