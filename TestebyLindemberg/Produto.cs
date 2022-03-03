@@ -25,7 +25,7 @@ class Produto{
     get{return ID;}  
   }
   public int qtd{
-    set{if(value > 0) Quantidade = value;}
+    set{if(value >= 0) Quantidade = value;}
     get{return Quantidade;}
   }
   public Produto(string a, double b, string c,int d, int e){
