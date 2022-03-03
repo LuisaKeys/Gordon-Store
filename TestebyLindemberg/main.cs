@@ -202,7 +202,7 @@ public static int  Realmenudocliente(){
     case 3: Carrinho.ListarCarrinho(); break;
     case 4: RetirarProduto(); break;
     case 5: ValorTotal(); break;
-    case 6: Console.WriteLine("teste"); break;
+    case 6: finalizar(); break;
     case 7: error = false; break;
   }
   }
@@ -212,6 +212,18 @@ public static int  Realmenudocliente(){
   }while(error);
   return 0;
 }
+public static void finalizar(){
+  Console.WriteLine("Deseja finalizar sua compra?");
+  Console.WriteLine($"Você pagará:R$ {Carrinho.ValorTotal()}");
+  Console.Write("Sua escolha(1 - Sim/ 2 - Não):");
+  int escolha = int.Parse(Console.ReadLine());
+  if(escolha == 1) {
+    Sistema.Finaliza();
+    Carrinho.Finalizar();
+    Console.WriteLine("Obrigado(a) por te comprado conosco, esperamos sua próxima visita.");
+  }
+  if(escolha == 2) Console.WriteLine("Tudo bem, aproveita nossa loja.");
+}
 public static void RetirarProduto(){
   Console.Write("Coloque o nome do produto que deseja retirar do seu carrinho:");
   string excluído = Console.ReadLine();
@@ -220,7 +232,7 @@ public static void RetirarProduto(){
   Carrinho.RetirarProduto(excluído, qtd);
 }
 public static void ValorTotal(){
-  Console.WriteLine($"Seu Valor total a pagar é:{Carrinho.ValorTotal()}");
+  Console.WriteLine($"Seu Valor total a pagar é:R$ {Carrinho.ValorTotal()}");
 }
 public static void adicionar(){
   Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");

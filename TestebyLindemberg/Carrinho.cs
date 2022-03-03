@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 class Carrinho{
   private static ArrayList cesta = new ArrayList();
+  public static void Finalizar(){
+    cesta.Clear();
+  }
   public static void ColocarProduto(string a, int qtd){
     Produto aux1 = Sistema.RevelaProduto(a, qtd);
     Jogo aux2;

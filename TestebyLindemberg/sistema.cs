@@ -6,6 +6,13 @@ using System.Collections.Generic;
 class Sistema{
   private static Produto[] w = new Produto[10];
   private static int qtd = 0;
+  public static void Finaliza(){
+    for(int i = 0; i < qtd; i++){
+      if(w[i].qtd == 0){
+        w[i] = null;
+      }
+    }
+  }
   public static void InserirJogo(Jogo obj){
     if(qtd == w.Length){
       Array.Resize(ref w, 2 * w.Length);
