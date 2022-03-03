@@ -1,7 +1,7 @@
 using System;
 
 class Produto{
-  private static List<Produto> prods = new List<Produto>();
+  
   protected string Nome;
   protected static int Id;
   protected double Preco;

@@ -49,5 +49,21 @@ class Sistema{
     Array.Copy(w, auxiliar, qtd);
     return auxiliar;
   }
-}// e eu vou terminar essa parte e seja oq deus quiser
-//qual parte? mas seja qual for, confio em você
+  public static Produto RevelaProduto(string a,int qtd){
+    for(int i = 0; i < qtd; i++){
+      if(w[i].nome == a){
+      Produto aux = w[i];
+      aux.qtd = aux.qtd - qtd; 
+      return aux;  
+      } 
+  }
+  return null;
+}
+  public static void ReadicionarQtd(string a, int b){
+    for(int i = 0; i < qtd; i++){
+      if(w[i].nome == a){
+        w[i].qtd = w[i].qtd + b;
+      }
+    }
+  }
+}

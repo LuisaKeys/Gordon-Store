@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 //alo som teste
 class Sistema{
+private static List<Produto> prods = new List<Produto>();
  public static List<Produto> ProdutoListar() {
     return prods;
   }

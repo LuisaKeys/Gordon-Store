@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 class program{
   public static void Main(){
-    Produto[] a = new Produto[10];
-    Jogo b = new Jogo("sonic",2,"sega",3,1);
-    HQ c = new HQ("superman",2,"DC",3,1,1);  
+    bool testando = true;
+    do{
     Console.WriteLine("------------------");
     Console.WriteLine("Escolha uma opção:");
     Console.WriteLine("1 - Menu do Cliente.");
@@ -16,13 +15,9 @@ class program{
     int escolha = int.Parse(Console.ReadLine());
     if(escolha == 2) MenuAdmin();
     if(escolha == 1) MenuCliente();
-    if(escolha == 4){
-      a[0] = b;
-      a[1] = c;
-      Console.WriteLine(a[0].nome);
-      Console.WriteLine((a[1] as HQ).ediçao);
+    if(escolha == 4) testando = false;
 
-    }
+    }while(testando);
   }
 public static void MenuAdmin(){
   int escolha;
@@ -187,14 +182,15 @@ public static int  Realmenudocliente(){
   int escolha;
   bool error = false;
   do{
-  Console.WriteLine("--Bem-Vindo(a) caro cliente, ao Gordon Store, a maior loja geek do mercado--");
+  Console.WriteLine("--Bem-Vindo(a) ao Gordon Store--");
   Console.WriteLine("Escolha a opção que deseja fazer:");
   Console.WriteLine("1 - Olhar os Produtos na loja");
   Console.WriteLine("2 - Adicionar o Produto ao carrinho");
-  Console.WriteLine("3 - Retirar Produto do carrinho");
-  Console.WriteLine("4 - Ver o valor total a pagar");
-  Console.WriteLine("5 - Finalizar compra");
-  Console.WriteLine("6 - Finalizar programa(Você não está em uma matrix)");
+  Console.WriteLine("3 - Listar o Carrinho");
+  Console.WriteLine("4 - Retirar Produto do carrinho");
+  Console.WriteLine("5 - Ver o valor total a pagar");
+  Console.WriteLine("6 - Finalizar compra");
+  Console.WriteLine("7 - Finalizar programa(Você não está em uma matrix)");
   Console.Write("Opção escolhida:");
   try{
   error = true;  
@@ -202,11 +198,12 @@ public static int  Realmenudocliente(){
   Console.WriteLine("---------------------------");
   switch(escolha){
     case 1: Loja(); break;
-    case 2: Console.WriteLine("teste"); break;
-    case 3: Console.WriteLine("teste"); break;
-    case 4: Console.WriteLine("teste"); break;
-    case 5: Console.WriteLine("teste"); break;
-    case 6: error = false; break;
+    case 2: adicionar(); break;
+    case 3: Carrinho.ListarCarrinho(); break;
+    case 4: RetirarProduto(); break;
+    case 5: ValorTotal(); break;
+    case 6: Console.WriteLine("teste"); break;
+    case 7: error = false; break;
   }
   }
   catch(Exception obj){
@@ -215,21 +212,38 @@ public static int  Realmenudocliente(){
   }while(error);
   return 0;
 }
+public static void RetirarProduto(){
+  Console.Write("Coloque o nome do produto que deseja retirar do seu carrinho:");
+  string excluído = Console.ReadLine();
+  Console.Write("Qual a quantidade que deseja tirar:");
+  int qtd = int.Parse(Console.ReadLine());
+  Carrinho.RetirarProduto(excluído, qtd);
+}
+public static void ValorTotal(){
+  Console.WriteLine($"Seu Valor total a pagar é:{Carrinho.ValorTotal()}");
+}
+public static void adicionar(){
+  Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
+  string nome = Console.ReadLine();
+  Console.WriteLine("Quantos desse produto você que levar?");
+  int qtd = int.Parse(Console.ReadLine());
+  Carrinho.ColocarProduto(nome, qtd);
+}
 public static void Loja(){
   Console.WriteLine("Esse são os produtos oferecidos:");
   foreach(Produto obj in Sistema.ListarProdutos()){
     if(obj is Jogo){
-      Console.WriteLine("--{obj.nome}(Jogo)--");
-      Console.WriteLine("Estúdio:{obj.publi}");
-      Console.WriteLine("Preço:R${obj.preço}");
-      Console.WriteLine("Estoque:{obj.qtd}");
+      Console.WriteLine($"--{obj.nome}(Jogo)--");
+      Console.WriteLine($"Estúdio:{obj.publi}");
+      Console.WriteLine($"Preço:R${obj.preço}");
+      Console.WriteLine($"Estoque:{obj.qtd}");
     }
     if(obj is HQ){
-      Console.WriteLine("--{obj.nome}(HQ)--");
-      Console.WriteLine("Estúdio:{obj.publi}");
-      Console.WriteLine("Edição:{(obj as HQ).ediçao}");
-      Console.WriteLine("Preço:R${obj.preço}");
-      Console.WriteLine("Estoque:{obj.qtd}");
+      Console.WriteLine($"--{obj.nome}(HQ)--");
+      Console.WriteLine($"Estúdio:{obj.publi}");
+      Console.WriteLine($"Edição:{(obj as HQ).ediçao}");
+      Console.WriteLine($"Preço:R${obj.preço}");
+      Console.WriteLine($"Estoque:{obj.qtd}");
     }
   }
 }
