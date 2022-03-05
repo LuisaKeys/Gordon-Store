@@ -5,24 +5,27 @@ using System.Collections.Generic;
 class Program{
   public static void Main(){
     int opcao = 0;
-    int teste = 1;
       do{
         try{
-        Console.WriteLine("Deseja finalizar?(0 - continuar/iniciar : 1 - sair)");
-        teste = int.Parse(Console.ReadLine());
-        opcao = Menu();
+        Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
+    Console.WriteLine("------ Escolha uma opção ------");
+    Console.WriteLine("01 - Entrar como Cliente.");
+    Console.WriteLine("02 - Entrar como Administrador.");
+    Console.WriteLine("00 - Finalizar programa.");
+    Console.WriteLine("-------------------------------");
+    Console.Write("Opção: ");
+    opcao = int.Parse(Console.ReadLine());
+    //opcao = Menu();
           switch(opcao){
           case 1 : MenuCliente();break;
-          case 2 : MenuAdm();break;
-          case 3 : teste = 0; break;    
+          case 2 : MenuAdm();break;   
           }
         }catch{
           Console.WriteLine("Opção inválida.");
         }
-        }while(teste == 1);
+        }while(opcao != 0);
   }
-  public static int Menu(){
-    int op = 1;
+  /*public static int Menu(){
     int opcao;
     do{ 
     Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
@@ -32,14 +35,11 @@ class Program{
     Console.WriteLine("00 - Finalizar programa.");
     Console.WriteLine("-------------------------------");
     Console.Write("Opção: ");
-    opcao = int.Parse(Console.ReadLine());
-    if(opcao == 0){
-      op = 0;
-    }  
+    opcao = int.Parse(Console.ReadLine());  
     Console.WriteLine();
-    }while(op != 0);  
+    }while(opcao > 0);  
     return opcao;
-  }
+  }*/
   //menu adm
   public static void MenuAdm(){
     int opcaoA;
@@ -57,7 +57,7 @@ class Program{
             error = true;
             opcaoA = int.Parse(Console.ReadLine());
             switch(opcaoA){
-            case 0:    
+            case 0: error = false; break;   
             case 1: ProdutoInserir(); break;
             case 2: ProdutoExcluir(); break;
             case 3: ProdutoListar(); break;
