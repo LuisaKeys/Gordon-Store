@@ -1,25 +1,24 @@
 using System;
-using System.Collections.Generic;
-//alo som teste
-class Sistema{
-private static List<Produto> prods = new List<Produto>();
- public static List<Produto> ProdutoListar() {
-    return prods;
+
+//testando método pesquisar
+  class Sistema{
+  private static Produto[] prod = new Produto[100];
+  private static int k = 0;
+  
+  public Produto[] Pesquisar(string nome) {
+    int k = 0;
+    foreach (Produto p in prod) { 
+      if (p != null && p.nome == nome) k++;
+    }
+    Produto[] aux = new Produto[k];
+    int q = 0;
+    foreach (Produto p in prod) {
+      if (p != null && p.nome == nome) 
+      {
+        aux[q] = p;
+        q++;
+      }
+    }
+    return aux;  
   }
-  public static void ProdutoInserir(Produto obj) {
-    prods.Add(obj);
-  }
-   public static void ProdutoAtualizar(Produto obj) {
-    Produto aux = ProdutoListar(obj.nome());
-    if (aux != null) {
-      aux.preco(obj.preco());
-      aux.estudio(obj.estudio());
-      aux.qtd(obj.qtd());
-      if(id == 2)
-      aux.edicao(obj.edicao());
-    }  
-  }
-  public static void ProdutoExcluir(Produto obj) {
-    Produto aux = ProdutoListar(obj.nome());
-    if (aux != null) prods.Remove(aux);
-  }
+}

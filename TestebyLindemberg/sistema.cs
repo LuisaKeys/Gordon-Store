@@ -56,11 +56,11 @@ class Sistema{
     Array.Copy(w, auxiliar, qtd);
     return auxiliar;
   }
-  public static Produto RevelaProduto(string a,int qtd){
+  public static Produto RevelaProduto(string a,int q){
     for(int i = 0; i < qtd; i++){
       if(w[i].nome == a){
       Produto aux = w[i];
-      aux.qtd = aux.qtd - qtd; 
+      aux.qtd = aux.qtd - q; 
       return aux;  
       } 
   }
