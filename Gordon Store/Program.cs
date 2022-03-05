@@ -7,10 +7,10 @@ class Program{
     int opcao = 0;
     int teste = 1;
       do{
-        Console.WriteLine("Deseja finalizar?(0 - continuar/iniciar : 1 - sair)");
-        
-        opcao = Menu();
         try{
+        Console.WriteLine("Deseja finalizar?(0 - continuar/iniciar : 1 - sair)");
+        teste = int.Parse(Console.ReadLine());
+        opcao = Menu();
           switch(opcao){
           case 1 : MenuCliente();break;
           case 2 : MenuAdm();break;
