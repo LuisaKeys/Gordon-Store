@@ -5,19 +5,26 @@ using System.Collections.Generic;
 class Program{
   public static void Main(){
     int opcao = 0;
+    int teste = 1;
       do{
+        Console.WriteLine("Deseja finalizar?(0 - continuar/iniciar : 1 - sair)");
+        
         opcao = Menu();
         try{
           switch(opcao){
           case 1 : MenuCliente();break;
           case 2 : MenuAdm();break;
+          case 3 : teste = 0; break;    
           }
         }catch{
           Console.WriteLine("Opção inválida.");
         }
-        }while(opcao != 0);
+        }while(teste == 1);
   }
   public static int Menu(){
+    int op;
+    int opcao;
+    do{ 
     Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
     Console.WriteLine("------ Escolha uma opção ------");
     Console.WriteLine("01 - Entrar como Cliente.");
@@ -25,8 +32,10 @@ class Program{
     Console.WriteLine("00 - Finalizar programa.");
     Console.WriteLine("-------------------------------");
     Console.Write("Opção: ");
-    int opcao = int.Parse(Console.ReadLine());
+    opcao = int.Parse(Console.ReadLine());
+    op = opcao;  
     Console.WriteLine();
+    }while(op != 0);  
     return opcao;
   }
   //menu adm
