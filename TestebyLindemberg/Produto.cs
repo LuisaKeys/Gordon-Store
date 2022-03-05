@@ -41,8 +41,8 @@ public override string ToString(){
 }
 class Jogo:Produto{
   public Jogo(string a,double b,string c,int d,int e):base (a,b,c,d,e){}
-  public string descrição(){
-    return $"--Nome:{Nome}--"+"\n"+$"Estúdio:{Publi}"+"\n"+$"Preço:{Preço}"+"\n"+$"Quantidade pega:{qtd}";
+  public string Descrição(){
+    return $"--Nome:{Nome}(Jogo)--"+"\n"+$"Estúdio:{Publi}"+"\n"+$"Preço:{Preço}"+"\n"+$"Quantidade pega:{qtd}";
   }  
 }
 class HQ:Produto{
@@ -54,7 +54,7 @@ class HQ:Produto{
     get{return Ediçao;}
     set{if(value > -1) Ediçao = value;}  
   }
-  public string descrição(){
+  public string Descrição(){
     return $"--(HQ){Nome}--"+"\n"+$"Estúdio:{Publi}"+"\n"+$"Edição:{ediçao}"+"\n"+$"Preço:{Preço}"+"\n"+$"Quantidade pega:{qtd}";
   }
   public override string ToString(){

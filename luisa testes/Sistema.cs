@@ -5,7 +5,7 @@ using System;
   private static Produto[] prod = new Produto[100];
   private static int k = 0;
   
-  public Produto[] Pesquisar(string nome) {
+  public Produto[] ProdutoPesquisar(string nome) {
     int k = 0;
     foreach (Produto p in prod) { 
       if (p != null && p.nome == nome) k++;
