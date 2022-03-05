@@ -72,20 +72,24 @@ class Program{
   Console.WriteLine("-- Lista dos Produtos Inseridos --");
   foreach(Produto p in Sistema.ListarProdutos()){
     if(p is Jogo){
-    Console.WriteLine((p as Jogo).Descricao());
-    }  
+    Console.WriteLine(p.ToString());
+    }
+    if(p is HQ){
+    Console.WriteLine((p as HQ).ToString());
+    }
   }
   Console.WriteLine("--------------------------------");
   }
   
   public static void ProdutoInserir(){
+    int id; 
   Console.WriteLine("---------------------------------");
-  Console.Write("Defina um id para o produto: ");
-  int id = int.Parse(Console.ReadLine());
   Console.WriteLine("Seu produto é o que?(1 - Jogo/2 - HQ)");
   int escolha = int.Parse(Console.ReadLine()); 
-      if(escolha == 1){               
-      Console.Write("Nome: ");
+      if(escolha == 1){
+        Console.Write("Defina um id para o produto: ");
+        id = int.Parse(Console.ReadLine());
+        Console.Write("Nome: ");
         string nome = Console.ReadLine();
         Console.Write("Preço: ");
         double preco = double.Parse(Console.ReadLine());
@@ -97,18 +101,20 @@ class Program{
         Sistema.InserirJogo(obc);
       }
        if(escolha == 2){
+         Console.Write("Defina um id para o produto: ");
+         id = int.Parse(Console.ReadLine());
          Console.Write("Nome: ");
-        string nome = Console.ReadLine();
-        Console.Write("Preço: ");
-        double preco = double.Parse(Console.ReadLine());
-        Console.Write("Estúdio: ");
-        string estudio = Console.ReadLine();
-        Console.Write("Quantidade: ");
-        int qtd = int.Parse(Console.ReadLine());
+          string nome = Console.ReadLine();
+          Console.Write("Preço: ");
+          double preco = double.Parse(Console.ReadLine());
+          Console.Write("Estúdio: ");
+          string estudio = Console.ReadLine();
+          Console.Write("Quantidade: ");
+          int qtd = int.Parse(Console.ReadLine());
           Console.Write("Edição: ");
           int edicao = int.Parse(Console.ReadLine());
           HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
-         Sistema.InserirHQ(obj); 
+          Sistema.InserirHQ(obj); 
         }
         Console.WriteLine("---------------------------------");
       }
@@ -233,7 +239,7 @@ public static void Finalizar(){
   Console.Write("Sua escolha(1 - Sim/ 2 - Não):");
   int escolha = int.Parse(Console.ReadLine());
   if(escolha == 1) {
-    Sistema.Finaliza();
+    Sistema.Finalizar();
     Carrinho.Finalizar();
     Console.WriteLine("Obrigado(a) por te comprado conosco, esperamos sua próxima visita.");
   }

@@ -3,7 +3,7 @@ using System;
 class Produto{
   
   protected string Nome;
-  protected static int Id;
+  protected int Id;
   protected double Preco;
   protected string Estudio;
   protected int Qtd;
@@ -40,7 +40,7 @@ class Produto{
     get{
       return Qtd;
     }set{
-      if(value > 0) Qtd = value;
+      if(value >= 0) Qtd = value;
       }
     }
   public Produto(string nome, int id, double preco, string estudio, int qtd){
@@ -56,13 +56,14 @@ class Produto{
 }
 class Jogo:Produto{
   public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){}
-  
+  public override string ToString() {
+    return $"Nome:{Nome} - ID:{Id} - Preço{Preco} - Estúdio:{Estudio} - Estoque:{Qtd}";  
+  }
   public string Descricao(){
     return $"--Nome:{Nome}(Jogo)--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
   }  
 }
-class HQ:Produto
-  { 
+class HQ:Produto{ 
   private int Edicao;
 
   public int edicao{
@@ -80,6 +81,6 @@ class HQ:Produto
     return $"--(HQ){Nome}--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Edição:{Edicao}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
   }
   public override string ToString() {
-    return $"{Nome} - {Id} - {Preco} - {Edicao} - {Estudio} - {Qtd}";  
+    return $"Nome: {Nome} - ID: {Id} - Preço: {Preco} - Edição: {Edicao} - Estúdio: {Estudio} - Estoque: {Qtd}";  
   }
 }

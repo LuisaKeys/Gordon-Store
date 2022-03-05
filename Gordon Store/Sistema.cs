@@ -5,7 +5,8 @@ using System.Collections.Generic;
 class Sistema{
   private static Produto[] w = new Produto[10];
   private static int qtd = 0;
-  public static void Finaliza(){
+  
+  public static void Finalizar(){
     for(int i = 0; i < qtd; i++){
       if(w[i].qtd == 0){
         w[i] = null;
@@ -28,10 +29,11 @@ class Sistema{
   }
   public static void ProdutoExcluir(int a){
     int posição = MostrePosição(a);
-    w[a] = null;
-    for(int i = posição; i < qtd - 1; i++){
+    w[posição] = null;
+    for(int i = posição; i < qtd; i++){
       w[i] = w[i+1];
     }
+    qtd = qtd - 1;
   }
   public static Produto Atualização(int id){
     for(int i = 0; i < qtd; i++){

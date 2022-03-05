@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 class Carrinho{
   private static ArrayList cesta = new ArrayList();
+  
   public static void Finalizar(){
     cesta.Clear();
   }
@@ -17,7 +18,7 @@ class Carrinho{
     }
     aux2 = null;
     if(aux1 is HQ){
-    aux3 = new HQ(aux1.nome, aux1.id, aux1.preco,  (aux1 as HQ).edicao, aux1.estudio, aux1.qtd);
+    aux3 = new HQ(aux1.nome, aux1.id, aux1.preco,  (aux1 as HQ).edicao, aux1.estudio, qtd);
     cesta.Add(aux3);
     }
     aux3 = null;
