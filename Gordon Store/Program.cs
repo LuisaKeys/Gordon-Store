@@ -22,7 +22,7 @@ class Program{
         }while(teste == 1);
   }
   public static int Menu(){
-    int op;
+    int op = 1;
     int opcao;
     do{ 
     Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
@@ -33,7 +33,9 @@ class Program{
     Console.WriteLine("-------------------------------");
     Console.Write("Opção: ");
     opcao = int.Parse(Console.ReadLine());
-    op = opcao;  
+    if(opcao == 0){
+      op = 0;
+    }  
     Console.WriteLine();
     }while(op != 0);  
     return opcao;
