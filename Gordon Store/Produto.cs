@@ -40,12 +40,9 @@ class Produto{
     get{
       return Qtd;
     }set{
-      if(value <= 0) Qtd = 0;
-      else{
-        value = Qtd;  
+      if(value > 0) Qtd = value;
       }
     }
-  }
   public Produto(string nome, int id, double preco, string estudio, int qtd){
     this.nome = nome;
     this.id = id;
@@ -58,13 +55,8 @@ class Produto{
   }
 }
 class Jogo:Produto{
-  public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
-    this.nome = nome;
-    this.id = id;
-    this.preco = preco;
-    this.estudio = estudio;
-    this.qtd = qtd;
-  }
+  public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){}
+  
   public string Descricao(){
     return $"--Nome:{Nome}(Jogo)--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
   }  
@@ -83,11 +75,6 @@ class HQ:Produto
 
   public HQ(string nome, int id, double preco, int edicao, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
     this.edicao = edicao;
-    this.nome = nome;
-    this.id = id;
-    this.preco = preco;
-    this.estudio = estudio;
-    this.qtd = qtd;
   }
   public string Descricao(){
     return $"--(HQ){Nome}--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Edição:{Edicao}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
