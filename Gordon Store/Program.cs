@@ -117,7 +117,7 @@ class Program{
           Sistema.InserirHQ(obj); 
         }
         Console.WriteLine("---------------------------------");
-      }
+  }
       
   
   public  static void ProdutoAtualizar(){
@@ -265,8 +265,12 @@ public static void CarrinhoInserir(){
   Carrinho.CarrinhoInserir(nome, qtd);
 }
 public static void CarrinhoListar(){
-  Console.WriteLine("Esse são os produtos oferecidos:");
+  Console.WriteLine("Esse são os produtos Pegos:");
     Carrinho.CarrinhoListar();
     Console.WriteLine($"Seu Valor total a pagar é:R$ {Carrinho.CarrinhoSomar()}");
   }
-}  
+}
+/*Lista de Problemas: 
+1 - Depois de finalizar a compra a lista não deixa colocar novos produtos.
+2 -
+*/

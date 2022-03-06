@@ -7,12 +7,17 @@ class Sistema{
   private static int qtd = 0;
   
   public static void Finalizar(){
+    int aux = 0;
     for(int i = 0; i < qtd; i++){
+      if(w[i] != null){
       if(w[i].qtd == 0){
-        w[i] = null;
+         w[i] = null;
+         aux = aux + 1;
+      }
       }
     }
-  }
+    qtd = qtd - aux;
+    }
   public static void InserirJogo(Jogo obj){
     if(qtd == w.Length){
       Array.Resize(ref w, 2 * w.Length);
@@ -51,7 +56,6 @@ class Sistema{
    }
   return -1;
   }
-  
   public static Produto[] ListarProdutos(){
     Produto[] auxiliar = new Produto[qtd];
     Array.Copy(w, auxiliar, qtd);
