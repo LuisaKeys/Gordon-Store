@@ -57,7 +57,7 @@ class Produto{
 class Jogo:Produto{
   public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){}
   public override string ToString() {
-    return $"Nome:{Nome} - ID:{Id} - Preço{Preco} - Estúdio:{Estudio} - Estoque:{Qtd}";  
+    return $"Nome: {Nome} - ID: {Id} - Preço: {Preco:00.00} - Estúdio: {Estudio} - Estoque: {Qtd}";  
   }
   public string Descricao(){
     return $"--Nome:{Nome}(Jogo)--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
@@ -78,9 +78,9 @@ class HQ:Produto{
     this.edicao = edicao;
   }
   public string Descricao(){
-    return $"--(HQ){Nome}--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Edição:{Edicao}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega:{Qtd}";
+    return $"--(HQ){Nome}--"+"\n"+$"Estúdio:{Estudio}"+"\n"+$"Edição:{Edicao}"+"\n"+$"Preço:{Preco}"+"\n"+$"Quantidade pega: {Qtd}";
   }
   public override string ToString() {
-    return $"Nome: {Nome} - ID: {Id} - Preço: {Preco} - Edição: {Edicao} - Estúdio: {Estudio} - Estoque: {Qtd}";  
+    return $"Nome: {Nome} - ID: {Id} - Preço: {Preco} - Edição: #{Edicao} - Estúdio: {Estudio} - Estoque: {Qtd}";  
   }
 }
