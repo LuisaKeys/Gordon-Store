@@ -60,7 +60,7 @@ class Jogo:Produto{
     return $"Nome: {Nome} - ID: {Id} - Preço: {Preco:00.00} - Estúdio: {Estudio} - Estoque: {Qtd}";  
   }
   public string Descricao(){
-    return $"--Nome: {Nome}(Jogo)--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Preço: {Preco}"+"\n"+$"Quantidade pega: {Qtd}";
+    return $"--{Nome}(Jogo)--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Preço: {Preco}"+"\n"+$"Quantidade pega: {Qtd}";
   }  
 }
 class HQ:Produto{ 
