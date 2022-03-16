@@ -1,5 +1,16 @@
 using System;
+/*Também vou usar esse lugar para testes caso não se importe
 
+LISTA DE COISAS A SEREM CONSERTADAS E ADICIONADAS:
+-Bug que apareceu na apresentação
+-Controle melhor da quantidade de produtos que sai e entram na loja
+-Adiciona tratamento melhor de erros
+- Adiciona o arquivo e serializer,Lista do que vai ter no arquivo:
+  * Nome e Senha do cadastro do cliente
+  * carrinho do cliente logado
+
+--Por enquanto só--
+*/
 class Produto{
   
   protected string Nome;
