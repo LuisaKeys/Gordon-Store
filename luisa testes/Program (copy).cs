@@ -1,7 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+/*Também vou usar esse lugar para testes caso não se importe
+*Caso mude algo, colocque um aviso para o parceiro não mexer(caso esteja funcionando) e explicando qual a mudança ou a adição que fez,para organização coloque aqui:
 
+
+------
+LISTA DE COISAS A SEREM CONSERTADAS E ADICIONADAS:
+-Bug que apareceu na apresentação
+-Coloca interface
+-Controle melhor da quantidade de produtos que sai e entram na loja
+-Adiciona tratamento melhor de erros
+- Adiciona o arquivo e serializer,Lista do que vai ter no arquivo: //estaria pronto se salvasse😡😡😡😡, terminando aqui
+  * Nome e Senha do cadastro do cliente//cadastro "feito" 
+  *  a lista de carrinhos e de usuario que estão em Usuario.cs
+  * carrinho do cliente logado //esse vai ser cacete kkkkkjj jesus
+- colocar uma senha para entrar como adm
+
+--Por enquanto só--
+//ver o chat.
+*/
 class Program{
   public static void Main(){
     int opcao = 0;
@@ -162,35 +180,36 @@ class Program{
   Console.WriteLine("-------------------------------------------------");
   }
   //Cliente
-  public static int MenuCliente(){
+  public static void MenuCliente(){
   int conta;
     Console.WriteLine("------- Bem-Vindo(a) a Loja Gordon Store -------");
     Console.WriteLine("Antes de continuarmos considere logar apertando 1");
     Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
+    Console.WriteLine("Aperte 3 para entrar como convidado como convidado");
     Console.WriteLine("-------------------------------------------------");
     Console.Write("Qual sua opção: ");                
     conta = int.Parse(Console.ReadLine());
-    if(conta == 1){
-      Console.WriteLine(Login());
+    switch(conta){
+      case 1: Login(); break;
+      case 2: Registro(); break;
+      case 3: Realmenudocliente(); break;  
     }
-    if(conta == 2){
-      Console.WriteLine("Incompleto..");
-    }
-  return 0;
 }
-public static int Login(){
+public static void Registro(){
+  Console.WriteLine("--Cadastro--");
+  Console.Write("Qual nome gostaria de ser chamado(a):");
+  string n = Console.ReadLine();
+  Console.WriteLine();
+  Console.Write("Qual séria sua senha:");
+  string s = Console.ReadLine();
+  Usuario.Cadastro(n,s);
+  Console.WriteLine("------------");
+}  
+public static void Login(){
       Console.WriteLine("------ Login ------");
       Console.Write("Nome:");
-      Console.WriteLine();
-      Console.Write("Senha:");
-      Console.WriteLine();
-      Console.WriteLine("--------------------");
-      Console.WriteLine("Aperte 1 para logar como convidado");
-      int convidado = int.Parse(Console.ReadLine());
-      if(convidado == 1){
-        Console.WriteLine(Realmenudocliente());
-      }
-  return 0;
+      Console.WriteLine("Senha:");
+      //por enquanto é só isso
 }
 public static int Realmenudocliente(){
   int escolha;

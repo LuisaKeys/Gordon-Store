@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Carrinho{
   private static ArrayList cesta = new ArrayList();
-  
+  private static int ID;
   public static void Finalizar(){
     cesta.Clear();
   }
