@@ -5,10 +5,18 @@ using System.Collections.Generic;
 class Carrinho{
   private static ArrayList cesta = new ArrayList();
   private static int ID;
-  public static void Finalizar(){
+
+  public int GetID(){
+    return ID;
+  }
+  public Carrinho(ArrayList a, int b){
+    cesta = a;
+    ID = b;
+  }
+  public void Finalizar(){
     cesta.Clear();
   }
-  public static void CarrinhoInserir(string nome, int qtd){
+  public void CarrinhoInserir(string nome, int qtd){
     Produto aux1 = Sistema.RevelaProduto(nome, qtd);
     Jogo aux2;
     HQ aux3;
@@ -23,7 +31,7 @@ class Carrinho{
     }
     aux3 = null;
   }
-  public static void CarrinhoExcluir(string nome, int qtd){
+  public void CarrinhoExcluir(string nome, int qtd){
     Sistema.ReadicionarQtd(nome, qtd);
     for(int i = 0; i < cesta.Count;i++){
       if((cesta[i] as Produto).nome == nome){
@@ -42,14 +50,14 @@ class Carrinho{
       }
     }
   }
- public static double CarrinhoSomar(){
+ public double CarrinhoSomar(){
    double valor = 0;
    foreach(Produto a in cesta){
      valor = valor + a.qtd * a.preco;
    }
    return valor;
  }
- public static void CarrinhoListar(){
+ public  void CarrinhoListar(){
    foreach(Produto a in cesta){
      if(a is HQ) Console.WriteLine((a as HQ).Descricao());
      if(a is Jogo) Console.WriteLine((a as Jogo).Descricao());

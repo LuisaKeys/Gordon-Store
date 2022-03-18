@@ -21,6 +21,6 @@ class Cliente{
   public Cliente(string Nome, string Senha){
     if(Nome != null) this.Nome = Nome;
     if(Senha != null) this.Senha = Senha;
-    ID = ID + 1;//geração au tómatica vinicius 13
+    ID = ID + 1;//geração autómatica vinicius 13
   }
 }
