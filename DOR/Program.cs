@@ -1,31 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-/*Também vou usar esse lugar para testes caso não se importe
-*Caso mude algo, colocque um aviso para o parceiro não mexer(caso esteja funcionando) e explicando qual a mudança ou a adição que fez,para organização coloque aqui:
--mudei os métodos do carrinho
--coloquei novos métodos
--Problema: todos os usuarios estão usando o mesmo carrinho ainda, se eu conseguir resolver isso(mesmo com a ajuda de gilbert) minha parte estaria "feita";
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
+//código de dor e sofrimento(CONCORDO)
 
-------
-LISTA DE COISAS A SEREM CONSERTADAS E ADICIONADAS:
--Bug que apareceu na apresentação
--Coloca interface
--Controle melhor da quantidade de produtos que sai e entram na loja
--Adiciona tratamento melhor de erros
-- Adiciona o arquivo e serializer,Lista do que vai ter no arquivo: 
-  * Nome e Senha do cadastro do cliente//cadastro "feito" 
-  *  a lista de carrinhos e de usuario que estão em Usuario.cs
-  * carrinho do cliente logado 
-- colocar uma senha para entrar como adm
 
---Por enquanto só--
-//ver o chat.
-*/
 class Program{
-  private static int logado = 0;
-  private static int ID;
-  private static Carrinho aux;
   public static void Main(){
     int opcao = 0;
     do{
@@ -46,6 +28,12 @@ class Program{
           Console.WriteLine("Opção inválida.");
         }
       }while(opcao != 0);
+
+    try{
+      Sistema.ArquivoAbrir();
+    }catch(Exception erro){
+      Console.WriteLine(erro.Message);
+    }
   }
   //menu adm
   public static void MenuAdm(){
@@ -57,8 +45,6 @@ class Program{
         Console.WriteLine("02 - Excluir Produto");
         Console.WriteLine("03 - Listar Produtos");
         Console.WriteLine("04 - Editar Produto");
-        Console.WriteLine("05 - Lista de clientes");
-        Console.WriteLine("06 - Lista de Carrinhos cadastrados");
         Console.WriteLine("00 - Finalizar programa");
         Console.WriteLine("-------------------------------------------------");
         Console.WriteLine("escolha uma opção: ");
@@ -71,18 +57,23 @@ class Program{
             case 2: ProdutoExcluir(); break;
             case 3: ProdutoListar(); break;
             case 4: ProdutoAtualizar(); break;
-            case 5: Usuario.ListarClientes(); break;
-            case 6: Usuario.ListarCarrinho(); break;
           }
         }catch{
           Console.WriteLine("Opção inválida.");
       }
     }while(error);
     Console.WriteLine("");
+
+    try{
+      Sistema.ArquivoSalvar();
+    }catch(Exception erro){
+      Console.WriteLine(erro.Message);
+    }
   }
+  
    public static void ProdutoListar(){
   Console.WriteLine("-------- Lista dos Produtos Inseridos --------");
-  foreach(Produto p in Sistema.ListarProdutos()){
+  foreach(Produto p in Sistema.Listar()){
     if(p is Jogo){
     Console.WriteLine(p.ToString());
     Console.WriteLine("");
@@ -113,7 +104,7 @@ class Program{
         Console.Write("Quantidade: ");
         int qtd = int.Parse(Console.ReadLine());
         Jogo obc = new Jogo(nome, id, preco, estudio, qtd);
-        Sistema.InserirJogo(obc);
+        Sistema.Inserir(obc);
       }
        if(escolha == 2){
          Console.Write("Defina um id para o produto: ");
@@ -129,7 +120,7 @@ class Program{
           Console.Write("Edição: ");
           int edicao = int.Parse(Console.ReadLine());
           HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
-          Sistema.InserirHQ(obj); 
+          Sistema.Inserir(obj); 
         }
         Console.WriteLine("--------- Produto inserido com sucesso ----------");
         Console.WriteLine("-------------------------------------------------");
@@ -189,7 +180,7 @@ class Program{
   Console.WriteLine("-------------------------------------------------");
   }
   //Cliente
-  public static void MenuCliente(){
+  public static int MenuCliente(){
   int conta;
     Console.WriteLine("------- Bem-Vindo(a) a Loja Gordon Store -------");
     Console.WriteLine("Antes de continuarmos considere logar apertando 1");
@@ -197,41 +188,32 @@ class Program{
     Console.WriteLine("-------------------------------------------------");
     Console.Write("Qual sua opção: ");                
     conta = int.Parse(Console.ReadLine());
-    switch(conta){
-      case 1: Login(); break;
-      case 2: Registro(); break;  
+    if(conta == 1){
+      Console.WriteLine(Login());
     }
+    if(conta == 2){
+      Console.WriteLine("Incompleto..");
+    }
+  return 0;
 }
-public static void Registro(){
-  Console.WriteLine("--Cadastro--");
-  Console.Write("Qual nome gostaria de ser chamado(a):");
-  string n = Console.ReadLine();
-  Console.WriteLine();
-  Console.Write("Qual séria sua senha:");
-  string s = Console.ReadLine();
-  Usuario.Cadastro(n,s);
-  Console.WriteLine("------------");
-}  
-public static void Login(){
+public static int Login(){
       Console.WriteLine("------ Login ------");
       Console.Write("Nome:");
-      string nome = Console.ReadLine();
+      Console.WriteLine();
       Console.Write("Senha:");
-      string senha = Console.ReadLine();
-      int entrar = Usuario.Login(nome, senha);
-      if(entrar == 1){
-        ID = Usuario.usuariolocal(nome, senha);
-        aux = Usuario.CarrinhoUsuario(ID);
-        logado = 1;
+      Console.WriteLine();
+      Console.WriteLine("--------------------");
+      Console.WriteLine("Aperte 1 para logar como convidado");
+      int convidado = int.Parse(Console.ReadLine());
+      if(convidado == 1){
         Console.WriteLine(Realmenudocliente());
       }
-      if(entrar == 0) Console.WriteLine("Não existe essa conta");
+  return 0;
 }
 public static int Realmenudocliente(){
   int escolha;
   bool error = false;
-  if(logado == 1){  
-  do {
+  do{
   Console.WriteLine("-- Bem-Vindo(a) ao Gordon Store --");
   Console.WriteLine("Escolha a opção que deseja fazer:");
   Console.WriteLine("1 - Olhar os Produtos na loja");
@@ -250,28 +232,26 @@ public static int Realmenudocliente(){
     case 2: CarrinhoInserir(); break;
     case 3: CarrinhoListar(); break;
     case 4: CarrinhoExcluir(); break;
-    case 5: Finalizar(); error = false; break;
-    case 6: logado = 0; ID = 0; error = false; break;
+    case 5: Finalizar(); break;
+    case 6: error = false; break;
   }
   }
   catch(Exception obj){
     Console.WriteLine(obj.Message);
   }
   }while(error);
-  }
   return 0;
 }
 public static void Finalizar(){
   Console.WriteLine("-------------- Finalizando compra --------------");
   Console.WriteLine("Deseja finalizar sua compra?");
-  Console.WriteLine($"Você pagará: R${aux.CarrinhoSomar()}");
+  Console.WriteLine($"Você pagará: R${Carrinho.CarrinhoSomar()}");
   Console.Write("Sua escolha(1 - Sim/ 2 - Não): ");
   int escolha = int.Parse(Console.ReadLine());
   if(escolha == 1) {
     Sistema.Finalizar();
-    aux.Finalizar();
+    Carrinho.Finalizar();
     Console.WriteLine("Obrigado por ter comprado conosco, esperamos sua próxima visita.");
-    logado = 0;
   }
   else {
     Console.WriteLine("Tudo bem, aproveite nossa loja.");
@@ -283,21 +263,21 @@ public static void CarrinhoExcluir(){
   string excluído = Console.ReadLine();
   Console.Write("Qual a quantidade que deseja remover: ");
   int qtd = int.Parse(Console.ReadLine());
-  aux.CarrinhoExcluir(excluído, qtd);
+  Carrinho.CarrinhoExcluir(excluído, qtd);
 }
 public static void CarrinhoSomar(){
-  Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
+  Console.WriteLine($"Seu Valor total a pagar é: R${Carrinho.CarrinhoSomar()}");
 }
 public static void CarrinhoInserir(){
   Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
   string nome = Console.ReadLine();
   Console.WriteLine("Quantos desse produto você que levar?");
   int qtd = int.Parse(Console.ReadLine());
- aux.CarrinhoInserir(nome, qtd);
+  Carrinho.CarrinhoInserir(nome, qtd);
 }
 public static void CarrinhoListar(){
   Console.WriteLine("Esse são os produtos Pegos:");
-    aux.CarrinhoListar();
-    Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
+    Carrinho.CarrinhoListar();
+    Console.WriteLine($"Seu Valor total a pagar é: R${Carrinho.CarrinhoSomar()}");
   }
 }

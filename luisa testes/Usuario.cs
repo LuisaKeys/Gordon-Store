@@ -5,9 +5,20 @@ using System.Collections.Generic;
 class Usuario{
   private static List<Cliente> usuarios = new List<Cliente>();
   private static List<Carrinho> compra = new List<Carrinho>();
+  private static int ID;
   private static int qtd = 0;
   private static int qtdc = 0;
 
+  public static void ListarCarrinho(){
+    foreach(Carrinho a in compra){
+      Console.WriteLine(a);
+    }
+  }
+  public static void ListarClientes(){
+    foreach(Cliente a in usuarios){
+      Console.WriteLine(a);
+    }
+  }
   public static Carrinho CarrinhoUsuario(int ID){
     foreach(Carrinho a in compra){
       if(a.GetID() == ID) return a;
@@ -15,15 +26,13 @@ class Usuario{
     return null;
   }
   public static void Cadastro(string Nome, string Senha){
-    Cliente novo = new Cliente(Nome,Senha);
-    ArrayList lista = new ArrayList();
-    int aux = novo.id;
-    Carrinho cestinha = new Carrinho(lista, aux);
-    if(novo != null) {
-      usuarios.Add(novo);
-      qtd++;
-      AdicionaCompra(cestinha);
-    }
+    ID++;
+    Cliente novo = new Cliente(Nome,Senha, ID);
+    Carrinho aux = new Carrinho(novo.id);
+    usuarios.Add(novo);
+    qtd++;
+    compra.Add(aux);
+    qtdc++;
   }
   public static int usuariolocal(string nome, string senha){
     foreach(Cliente a in usuarios){
@@ -41,9 +50,5 @@ class Usuario{
       }
     }
     return 0;
-  }
-  public static void AdicionaCompra(Carrinho a){
-    compra.Add(a);
-    qtdc++;
-  }    
+  }   
 }
