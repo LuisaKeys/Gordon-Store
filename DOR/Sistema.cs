@@ -110,7 +110,7 @@ class Sistema{
     List<Jogo> jogos = new List<Jogo>();
     List<HQ> HQS = new List<HQ>();
     Arquivo<List<Jogo>> a1 = new Arquivo<List<Jogo>>();
-    jogos = a1.Abrir("./jogos.xml");
+    jogos = a1.Abrir("./Jogos.xml");
     
     Arquivo<List<HQ>> a2 = new Arquivo<List<HQ>>();
     HQS = a2.Abrir("./HQS.xml");
@@ -148,6 +148,6 @@ class Sistema{
     a3.Salvar("./Jogos.xml", jogos);
     
     Arquivo<List<HQ>> a4 = new Arquivo<List<HQ>>();
-    a4.Salvar("./HQs.xml", HQS);
+    a4.Salvar("./HQS.xml", HQS);
   }
 }
