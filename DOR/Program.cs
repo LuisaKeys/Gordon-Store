@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
 using System.Text;
+
 //código de dor e sofrimento(CONCORDO)
-
-
 class Program{
+  private static int logado = 0;
+  private static int ID;
+  private static Carrinho aux;
   public static void Main(){
     int opcao = 0;
+    try{
+      Sistema.ArquivoAbrir();
+    }catch(Exception erro){
+      Console.WriteLine(erro.Message);
+    }
+
     do{
       try{
         Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
@@ -30,7 +38,7 @@ class Program{
       }while(opcao != 0);
 
     try{
-      Sistema.ArquivoAbrir();
+      Sistema.ArquivoSalvar();
     }catch(Exception erro){
       Console.WriteLine(erro.Message);
     }
@@ -64,69 +72,7 @@ class Program{
     }while(error);
     Console.WriteLine("");
 
-    try{
-      Sistema.ArquivoSalvar();
-    }catch(Exception erro){
-      Console.WriteLine(erro.Message);
-    }
   }
-  
-   public static void ProdutoListar(){
-  Console.WriteLine("-------- Lista dos Produtos Inseridos --------");
-  foreach(Produto p in Sistema.Listar()){
-    if(p is Jogo){
-    Console.WriteLine(p.ToString());
-    Console.WriteLine("");
-    }
-    
-    if(p is HQ){
-    Console.WriteLine((p as HQ).ToString());
-    Console.WriteLine("");
-    }
-  }
-  Console.WriteLine("-------------------------------------------------");
-  }
-  
-  public static void ProdutoInserir(){
-    int id; 
-  Console.WriteLine("--------------- Inserindo produto ---------------");
-  Console.WriteLine("Seu produto é o que?(1 - Jogo/2 - HQ)");
-  int escolha = int.Parse(Console.ReadLine()); 
-      if(escolha == 1){
-        Console.Write("Defina um id para o produto: ");
-        id = int.Parse(Console.ReadLine());
-        Console.Write("Nome: ");
-        string nome = Console.ReadLine();
-        Console.Write("Preço: ");
-        double preco = double.Parse(Console.ReadLine());
-        Console.Write("Estúdio: ");
-        string estudio = Console.ReadLine();
-        Console.Write("Quantidade: ");
-        int qtd = int.Parse(Console.ReadLine());
-        Jogo obc = new Jogo(nome, id, preco, estudio, qtd);
-        Sistema.Inserir(obc);
-      }
-       if(escolha == 2){
-         Console.Write("Defina um id para o produto: ");
-         id = int.Parse(Console.ReadLine());
-         Console.Write("Nome: ");
-          string nome = Console.ReadLine();
-          Console.Write("Preço: ");
-          double preco = double.Parse(Console.ReadLine());
-          Console.Write("Estúdio: ");
-          string estudio = Console.ReadLine();
-          Console.Write("Quantidade: ");
-          int qtd = int.Parse(Console.ReadLine());
-          Console.Write("Edição: ");
-          int edicao = int.Parse(Console.ReadLine());
-          HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
-          Sistema.Inserir(obj); 
-        }
-        Console.WriteLine("--------- Produto inserido com sucesso ----------");
-        Console.WriteLine("-------------------------------------------------");
-  }
-      
-  
   public  static void ProdutoAtualizar(){
     string nome;
     double preco;
@@ -135,9 +81,39 @@ class Program{
     int edicao;
     Console.WriteLine("------------ Editando produto -------------");
     Console.Write("Qual o id do produto a ser editado: ");
-    int id = int .Parse(Console.ReadLine());
+    int id = int.Parse(Console.ReadLine());
     Produto obj = Sistema.Atualização(id);
+    if(obj is Jogo){
     Console.WriteLine("01 - Nome");
+    Console.WriteLine("02 - Preço");
+    Console.WriteLine("03 - Estúdio");
+    Console.WriteLine("04 - Quantidade");
+    int entrada = int.Parse(Console.ReadLine());
+      switch(entrada){
+        case 1: 
+          Console.Write("Digite o novo nome: "); 
+          nome = Console.ReadLine(); 
+          obj.nome = nome; 
+          break;
+        case 2: 
+          Console.Write("Digite o novo preço: ");
+          preco = double.Parse(Console.ReadLine());
+          obj.preco = preco;
+          break;
+        case 3: 
+          Console.Write("Digite o novo estúdio:");
+          estudio = Console.ReadLine();
+          obj.estudio = estudio;
+          break;
+        case 4: 
+          Console.Write("Digite a nova quantidade:");
+          qtd = int.Parse(Console.ReadLine());
+          obj.qtd = qtd;
+          break;
+      }
+    }
+    if(obj is HQ){
+      Console.WriteLine("01 - Nome");
     Console.WriteLine("02 - Preço");
     Console.WriteLine("03 - Estúdio");
     Console.WriteLine("04 - Quantidade");
@@ -170,17 +146,76 @@ class Program{
           (obj as HQ).edicao = edicao;
           break;
       }
+    }
     Console.WriteLine("-------------------------------------------------");
   }
-  public static void ProdutoExcluir(){
-  Console.WriteLine("--------------- Excluindo produto ---------------");
-  Console.Write("Digite o id do produto que deseja deletar: ");
-  int id = int.Parse(Console.ReadLine());
-    Sistema.ProdutoExcluir(id);
-  Console.WriteLine("-------------------------------------------------");
+  public static void ProdutoInserir(){
+    int id; 
+  Console.WriteLine("--------------- Inserindo produto ---------------");
+  Console.WriteLine("Seu produto é o que?(1 - Jogo/2 - HQ)");
+  int escolha = int.Parse(Console.ReadLine()); 
+      if(escolha == 1){
+        Console.Write("Defina um id para o produto: ");
+        id = int.Parse(Console.ReadLine());
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+        Console.Write("Preço: ");
+        double preco = double.Parse(Console.ReadLine());
+        Console.Write("Estúdio: ");
+        string estudio = Console.ReadLine();
+        Console.Write("Quantidade: ");
+        int qtd = int.Parse(Console.ReadLine());
+        Jogo obc = new Jogo(nome, id, preco, estudio, qtd);
+        Sistema.InserirJogo(obc);
+      }
+       if(escolha == 2){
+         Console.Write("Defina um id para o produto: ");
+         id = int.Parse(Console.ReadLine());
+         Console.Write("Nome: ");
+          string nome = Console.ReadLine();
+          Console.Write("Preço: ");
+          double preco = double.Parse(Console.ReadLine());
+          Console.Write("Estúdio: ");
+          string estudio = Console.ReadLine();
+          Console.Write("Quantidade: ");
+          int qtd = int.Parse(Console.ReadLine());
+          Console.Write("Edição: ");
+          int edicao = int.Parse(Console.ReadLine());
+          HQ obj = new HQ(nome, id, preco, edicao, estudio, qtd);
+          Sistema.InserirHQ(obj); 
+        }
+        Console.WriteLine("--------- Produto inserido com sucesso ----------");
+        Console.WriteLine("-------------------------------------------------");
+  }
+
+  public static void ProdutoListar(){
+  Console.WriteLine("----------- Lista dos Produtos Inseridos -----------");
+    foreach(Produto a in Sistema.ListarProduto()){
+      if(a is HQ) Console.WriteLine((a as HQ).ToString());
+      if(a is Jogo) Console.WriteLine((a as Jogo).ToString());
+    }
+  /*Console.WriteLine("----------------------- Jogos ----------------------");
+  foreach(Produto p in Sistema.ListarJogo()){
+    Console.WriteLine(p.ToString());
+    Console.WriteLine("");
+    }
+    Console.WriteLine("---------------------- HQs -----------------------");
+    foreach(Produto p in Sistema.ListarHQ()){
+    Console.WriteLine(p.ToString());
+    Console.WriteLine("");
+    }*/
+    Console.WriteLine("-------------------------------------------------");
+  }
+  
+  public static void ProdutoExcluir() {
+    Console.WriteLine("----------------- Excluir produto ----------------");
+      Console.Write("Informe o id do Produto que deseja excluir: ");
+      int id = int.Parse(Console.ReadLine());
+      Sistema.ProdutoExcluir(id);
+    Console.WriteLine("-------- Operação realizada com sucesso --------");
   }
   //Cliente
-  public static int MenuCliente(){
+  public static void MenuCliente(){
   int conta;
     Console.WriteLine("------- Bem-Vindo(a) a Loja Gordon Store -------");
     Console.WriteLine("Antes de continuarmos considere logar apertando 1");
@@ -188,32 +223,41 @@ class Program{
     Console.WriteLine("-------------------------------------------------");
     Console.Write("Qual sua opção: ");                
     conta = int.Parse(Console.ReadLine());
-    if(conta == 1){
-      Console.WriteLine(Login());
+    switch(conta){
+      case 1: Login(); break;
+      case 2: Registro(); break;  
     }
-    if(conta == 2){
-      Console.WriteLine("Incompleto..");
-    }
-  return 0;
 }
-public static int Login(){
+public static void Registro(){
+  Console.WriteLine("--Cadastro--");
+  Console.Write("Qual nome gostaria de ser chamado(a):");
+  string n = Console.ReadLine();
+  Console.WriteLine();
+  Console.Write("Qual séria sua senha:");
+  string s = Console.ReadLine();
+  Usuario.Cadastro(n,s);
+  Console.WriteLine("------------");
+}  
+public static void Login(){
       Console.WriteLine("------ Login ------");
       Console.Write("Nome:");
-      Console.WriteLine();
+      string nome = Console.ReadLine();
       Console.Write("Senha:");
-      Console.WriteLine();
-      Console.WriteLine("--------------------");
-      Console.WriteLine("Aperte 1 para logar como convidado");
-      int convidado = int.Parse(Console.ReadLine());
-      if(convidado == 1){
+      string senha = Console.ReadLine();
+      int entrar = Usuario.Login(nome, senha);
+      if(entrar == 1){
+        ID = Usuario.usuariolocal(nome, senha);
+        aux = Usuario.CarrinhoUsuario(ID);
+        logado = 1;
         Console.WriteLine(Realmenudocliente());
       }
-  return 0;
+      if(entrar == 0) Console.WriteLine("Não existe essa conta");
 }
 public static int Realmenudocliente(){
   int escolha;
   bool error = false;
-  do{
+  if(logado == 1){  
+  do {
   Console.WriteLine("-- Bem-Vindo(a) ao Gordon Store --");
   Console.WriteLine("Escolha a opção que deseja fazer:");
   Console.WriteLine("1 - Olhar os Produtos na loja");
@@ -232,26 +276,28 @@ public static int Realmenudocliente(){
     case 2: CarrinhoInserir(); break;
     case 3: CarrinhoListar(); break;
     case 4: CarrinhoExcluir(); break;
-    case 5: Finalizar(); break;
-    case 6: error = false; break;
+    case 5: Finalizar(); error = false; break;
+    case 6: logado = 0; ID = 0; error = false; break;
   }
   }
   catch(Exception obj){
     Console.WriteLine(obj.Message);
   }
   }while(error);
+  }
   return 0;
 }
 public static void Finalizar(){
   Console.WriteLine("-------------- Finalizando compra --------------");
   Console.WriteLine("Deseja finalizar sua compra?");
-  Console.WriteLine($"Você pagará: R${Carrinho.CarrinhoSomar()}");
+  Console.WriteLine($"Você pagará: R${aux.CarrinhoSomar()}");
   Console.Write("Sua escolha(1 - Sim/ 2 - Não): ");
   int escolha = int.Parse(Console.ReadLine());
   if(escolha == 1) {
     Sistema.Finalizar();
-    Carrinho.Finalizar();
+    aux.Finalizar();
     Console.WriteLine("Obrigado por ter comprado conosco, esperamos sua próxima visita.");
+    logado = 0;
   }
   else {
     Console.WriteLine("Tudo bem, aproveite nossa loja.");
@@ -259,25 +305,46 @@ public static void Finalizar(){
   Console.WriteLine("-------------------------------------------------");
 }
 public static void CarrinhoExcluir(){
+  int correto = 0;
+  Produto original;
+  do{
   Console.Write("Coloque o nome do produto que deseja retirar do seu carrinho: ");
   string excluído = Console.ReadLine();
   Console.Write("Qual a quantidade que deseja remover: ");
   int qtd = int.Parse(Console.ReadLine());
-  Carrinho.CarrinhoExcluir(excluído, qtd);
+  original = aux.ProdutoOriginal(excluído);  
+  if(qtd <= original.qtdpega && qtd > -1){  
+  aux.CarrinhoExcluir(excluído, qtd);
+    correto = 1;
+    original = null;
+  }else Console.WriteLine("Valor inválido");
+  }while(correto == 0);
 }
 public static void CarrinhoSomar(){
-  Console.WriteLine($"Seu Valor total a pagar é: R${Carrinho.CarrinhoSomar()}");
+  Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
 }
 public static void CarrinhoInserir(){
-  Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
-  string nome = Console.ReadLine();
-  Console.WriteLine("Quantos desse produto você que levar?");
-  int qtd = int.Parse(Console.ReadLine());
-  Carrinho.CarrinhoInserir(nome, qtd);
+  Produto original;
+  int correto = 0;
+  do{
+    Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
+    string nome = Console.ReadLine();
+    original = Sistema.ProdutoOriginal(nome);
+    Console.WriteLine("Quantos desse produto você que levar?");
+    int qtd = int.Parse(Console.ReadLine());
+    if(qtd <= original.qtd && qtd > -1){
+   aux.CarrinhoInserir(nome, qtd);
+     correto = 1;
+     original = null; 
+    }else{
+      Console.WriteLine("Valor inválido");
+    }
+  }while(correto == 0);
 }
 public static void CarrinhoListar(){
   Console.WriteLine("Esse são os produtos Pegos:");
-    Carrinho.CarrinhoListar();
-    Console.WriteLine($"Seu Valor total a pagar é: R${Carrinho.CarrinhoSomar()}");
+    aux.CarrinhoListar();
+    Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
   }
 }
+

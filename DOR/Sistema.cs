@@ -7,70 +7,90 @@ using System.Text;
 using System.Linq;
 
 class Sistema{
-  private static Produto[] w = new Produto[10];
+  //private static List<Jogo> jogo = new List<Jogo>();
+  //private static List<HQ> hq = new List<HQ>();
   private static List<Produto> prods = new List<Produto>();
+  //private static Produto[] w = new Produto[prods.Count];
   private static int qtd = 0;
-  //lista
-  public static void Inserir(Produto obj) {
-    prods.Add(obj);
+
+  public static Produto ProdutoOriginal(string nome){
+    foreach(Produto a in prods){
+      if(a.nome == nome) return a;
+    }
+    return null;
   }
-  public static List<Produto> Listar(){
+  public static void ProdutoExcluir(int a){
+    foreach(Produto b in prods){
+    if(b.id == a){
+    prods.Remove(b);
+    }
+    }
+    qtd = qtd - 1;
+    }
+  public static void InserirJogo(Jogo obj){
+    prods.Add(obj);
+    qtd++;
+  }
+  public static void InserirHQ(HQ obj){
+    prods.Add(obj);
+    qtd++;
+  }
+  public static List<Produto> ListarProduto(){
     prods.Sort();
     return prods;
-  }
-  //vetor
-  public static Produto[] ListarProdutos() {
-    Produto[] aux = new Produto[qtd];
-    Array.Copy(w, aux, qtd);
-    return aux;
-  }
+  } 
+  /*public static HQ C(int id) {
+    foreach(HQ obj in hq)
+      if (obj.id == id) return obj;
+    return null;  
+  }*/
+  /*public static Jogo A(int id) {
+    foreach(Jogo obj in jogo)
+      if (obj.id == id) return obj;
+    return null;  
+  }*/
+  /*public static Produto B(int id) {
+    foreach(Produto obj in prods)
+      if (obj.id == id) return obj;
+    return null;  
+  }*/
+  /*public static void UniaoProduto(){
+    prods.AddRange(hq);
+    prods.AddRange(jogo);
+    prods.CopyTo(w);
+  }*/
   public static void Finalizar(){
     int aux = 0;
     for(int i = 0; i < qtd; i++){
-      if(w[i] != null){
-      if(w[i].qtd == 0){
-         w[i] = null;
+      if(prods[i] != null){
+      if(prods[i].qtd == 0){
+         prods[i] = null;
          aux = aux + 1;
       }
       }
     }
     qtd = qtd - aux;
     }
-  
-  public static Produto[] ProdutoInserir() {
-    if (qtd == w.Length)
-      Array.Resize(ref w, 2 * w.Length);
-      w[qtd] = obj;
-      qtd++;
-  }
-  public static void ProdutoExcluir(int a){
-    int posição = MostrePosição(a);
-    w[posição] = null;
-    for(int i = posição; i < qtd; i++){
-      w[i] = w[i+1];
-    }
-    qtd = qtd - 1;
-  }
   public static Produto Atualização(int id){
     for(int i = 0; i < qtd; i++){
-      if(w[i].id == id){
-      Produto aux = w[i];
+      if(prods[i].id == id){
+      Produto aux = prods[i];
       return aux;  
       }  
     }
     return null;
   }
-  private static int MostrePosição(int id){
+  private static Produto MostrePosição(int id){
    for(int i = 0; i < qtd; i++){
-     int a = w[i].id;
-     if(id == a) return i; 
+     int a = prods[i].id;
+     if(id == a) return prods[i]; 
    }
-  return -1;
+  return null;
   }
-  public static Produto RevelaProduto(string a, int q){
+  public static Produto RevelaProduto(string a,int q){
     for(int i = 0; i < qtd; i++){
-      if(w[i].nome == a){
-      Produto aux = w[i];
+      if(prods[i].nome == a){
+      Produto aux = prods[i];
       aux.qtd = aux.qtd - q; 
       return aux;  
       } 
@@ -79,19 +99,55 @@ class Sistema{
 }
   public static void ReadicionarQtd(string a, int b){
     for(int i = 0; i < qtd; i++){
-      if(w[i].nome == a){
-        w[i].qtd = w[i].qtd + b;
+      if(prods[i].nome == a){
+        prods[i].qtd = prods[i].qtd + b;
       }
     }
   }
   
   //arquivos
   public static void ArquivoAbrir() {
-    Arquivo<List<Produto>> f2 = new Arquivo<List<Produto>>();
-    prods = f2.Abrir("./teste.xml");
+    List<Jogo> jogos = new List<Jogo>();
+    List<HQ> HQS = new List<HQ>();
+    Arquivo<List<Jogo>> a1 = new Arquivo<List<Jogo>>();
+    jogos = a1.Abrir("./jogos.xml");
+    
+    Arquivo<List<HQ>> a2 = new Arquivo<List<HQ>>();
+    HQS = a2.Abrir("./HQS.xml");
+    
+    Arquivo<int> a3 = new Arquivo<int>();
+    qtd = a3.Abrir("./qtd.xml");
+
+    foreach(Jogo a in jogos){
+      prods.Add((a as Produto));
+    }
+    foreach(HQ b in HQS){
+      prods.Add((b as Produto));
+    }
+    /*Arquivo<List<Jogo>> a1 = new Arquivo<List<Jogo>>();
+    jogo = a1.Abrir("./Jogos.xml");
+    
+    Arquivo<List<HQ>> a2 = new Arquivo<List<HQ>>();
+    hq = a2.Abrir("./HQs.xml");*/
+
   }
   public static void ArquivoSalvar() {
-    Arquivo<List<Produto>> f2 = new Arquivo<List<Produto>>();
-    f2.Salvar("./teste.xml", prods);
+    /*Arquivo<List<Produto>> a1 = new Arquivo<List<Produto>>();
+    a1.Salvar("./Produtos.xml", prods);*/
+    List<Jogo> jogos = new List<Jogo>();
+    List<HQ> HQS = new List<HQ>();
+    foreach(Produto a in prods){
+      if(a is Jogo) jogos.Add((a as Jogo));
+      if(a is HQ) HQS.Add((a as HQ));
+    }
+    
+    Arquivo<int> a2 = new Arquivo<int>();
+    a2.Salvar("./qtd.xml", qtd);
+    
+    Arquivo<List<Jogo>> a3 = new Arquivo<List<Jogo>>();    
+    a3.Salvar("./Jogos.xml", jogos);
+    
+    Arquivo<List<HQ>> a4 = new Arquivo<List<HQ>>();
+    a4.Salvar("./HQs.xml", HQS);
   }
 }

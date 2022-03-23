@@ -1,13 +1,22 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
 
-class Produto{
+public class Produto{
   
   protected string Nome;
   protected int Id;
   protected double Preco;
   protected string Estudio;
   protected int Qtd;
-  
+  protected int QtdPega;
+
+  public int qtdpega{
+    get{return QtdPega;}
+    set{if(value >= 0) QtdPega = value;}  
+  }
   public string nome{
     get{
       return Nome;
@@ -43,6 +52,7 @@ class Produto{
       if(value >= 0) Qtd = value;
       }
     }
+  public Produto(){ }
   public Produto(string nome, int id, double preco, string estudio, int qtd){
     this.nome = nome;
     this.id = id;
@@ -63,9 +73,9 @@ class Jogo:Produto{
     return $"--{Nome}(Jogo)--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Preço: {Preco}"+"\n"+$"Quantidade pega: {Qtd}";
   }  
 }
-class HQ:Produto{ 
+ class HQ:Produto{ 
   private int Edicao;
-
+  
   public int edicao{
     get{
       return Edicao;

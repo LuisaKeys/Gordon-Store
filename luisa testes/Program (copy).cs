@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
 /*Também vou usar esse lugar para testes caso não se importe
 *Caso mude algo, colocque um aviso para o parceiro não mexer(caso esteja funcionando) e explicando qual a mudança ou a adição que fez,para organização coloque aqui:
 -mudei os métodos do carrinho
@@ -28,6 +31,12 @@ class Program{
   private static Carrinho aux;
   public static void Main(){
     int opcao = 0;
+    try{
+      //Sistema.SistemaAbrirProduto();
+      Usuario.UsuarioAbrir();
+    }catch(Exception obj){
+      Console.WriteLine(obj.Message);
+    }
     do{
       try{
         Console.WriteLine("- Bem vindo(a) a Gordon Store! -");
@@ -46,6 +55,12 @@ class Program{
           Console.WriteLine("Opção inválida.");
         }
       }while(opcao != 0);
+    try{
+      //Sistema.SistemaSalvarProduto();
+      Usuario.UsuarioSalvar();
+    }catch(Exception obj){
+      Console.WriteLine(obj.Message);
+    }
   }
   //menu adm
   public static void MenuAdm(){
@@ -144,7 +159,7 @@ class Program{
     int edicao;
     Console.WriteLine("------------ Editando produto -------------");
     Console.Write("Qual o id do produto a ser editado: ");
-    int id = int .Parse(Console.ReadLine());
+    int id = int.Parse(Console.ReadLine());
     Produto obj = Sistema.Atualização(id);
     Console.WriteLine("01 - Nome");
     Console.WriteLine("02 - Preço");
@@ -279,21 +294,41 @@ public static void Finalizar(){
   Console.WriteLine("-------------------------------------------------");
 }
 public static void CarrinhoExcluir(){
+  int correto = 0;
+  Produto original;
+  do{
   Console.Write("Coloque o nome do produto que deseja retirar do seu carrinho: ");
   string excluído = Console.ReadLine();
   Console.Write("Qual a quantidade que deseja remover: ");
   int qtd = int.Parse(Console.ReadLine());
+  original = aux.ProdutoOriginal(excluído);  
+  if(qtd <= original.qtdpega && qtd > -1){  
   aux.CarrinhoExcluir(excluído, qtd);
+    correto = 1;
+    original = null;
+  }else Console.WriteLine("Valor inválido");
+  }while(correto == 0);
 }
 public static void CarrinhoSomar(){
   Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
 }
 public static void CarrinhoInserir(){
-  Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
-  string nome = Console.ReadLine();
-  Console.WriteLine("Quantos desse produto você que levar?");
-  int qtd = int.Parse(Console.ReadLine());
- aux.CarrinhoInserir(nome, qtd);
+  Produto original;
+  int correto = 0;
+  do{
+    Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
+    string nome = Console.ReadLine();
+    original = Sistema.ProdutoOriginal(nome);
+    Console.WriteLine("Quantos desse produto você que levar?");
+    int qtd = int.Parse(Console.ReadLine());
+    if(qtd <= original.qtd && qtd > -1){
+   aux.CarrinhoInserir(nome, qtd);
+     correto = 1;
+     original = null; 
+    }else{
+      Console.WriteLine("Valor inválido");
+    }
+  }while(correto == 0);
 }
 public static void CarrinhoListar(){
   Console.WriteLine("Esse são os produtos Pegos:");

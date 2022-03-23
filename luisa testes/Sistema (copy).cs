@@ -1,11 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
 
 class Sistema{
   private static Produto[] w = new Produto[10];
   private static int qtd = 0;
-  
+
+  public static void SistemaSalvarProduto(){
+    Arquivo<Produto[]> a = new Arquivo<Produto[]>();
+    
+    a.Salvar("Produtos.xml", w);     
+  }
+  public static void SistemaAbrirProduto(){
+    Arquivo<Produto[]> a = new Arquivo<Produto[]>(); 
+    w = a.Abrir("Produtos.xml");  
+  }
+  public static void SistemaSalvarQtd(){
+    
+  }
+  public static void SistemaAbrirQtd(){
+    
+  }
+  public static Produto ProdutoOriginal(string nome){
+    foreach(Produto a in w){
+      if(a.nome == nome) return a;
+    }
+    return null;
+  }
   public static void Finalizar(){
     int aux = 0;
     for(int i = 0; i < qtd; i++){

@@ -1,14 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
+using System.Linq;
 
 class Carrinho{
-  private static ArrayList cesta = new ArrayList();
-  
-  public static void Finalizar(){
+  private static List<Produto> cesta = new List<Produto>();
+  private  int ID;
+
+  public Carrinho(){}
+  public Carrinho(int b){
+    ID = b;
+  }
+  public  Produto ProdutoOriginal(string nome){
+    foreach(Produto a in cesta){
+      if(a.nome == nome) return a;
+    }
+    return null;
+  } 
+  public override string ToString(){
+    return $"Carrinho de ID:{ID}";
+  }
+  public int GetID(){
+    return ID;
+  }
+  public  void Finalizar(){
     cesta.Clear();
   }
-  public static void CarrinhoInserir(string nome, int qtd){
+  public  void CarrinhoInserir(string nome, int qtd){
     Produto aux1 = Sistema.RevelaProduto(nome, qtd);
     Jogo aux2;
     HQ aux3;
@@ -23,7 +44,7 @@ class Carrinho{
     }
     aux3 = null;
   }
-  public static void CarrinhoExcluir(string nome, int qtd){
+  public  void CarrinhoExcluir(string nome, int qtd){
     Sistema.ReadicionarQtd(nome, qtd);
     for(int i = 0; i < cesta.Count;i++){
       if((cesta[i] as Produto).nome == nome){
@@ -42,14 +63,14 @@ class Carrinho{
       }
     }
   }
- public static double CarrinhoSomar(){
+ public  double CarrinhoSomar(){
    double valor = 0;
    foreach(Produto a in cesta){
      valor = valor + a.qtd * a.preco;
    }
    return valor;
  }
- public static void CarrinhoListar(){
+ public  void CarrinhoListar(){
    foreach(Produto a in cesta){
      if(a is HQ) Console.WriteLine((a as HQ).Descricao());
      if(a is Jogo) Console.WriteLine((a as Jogo).Descricao());

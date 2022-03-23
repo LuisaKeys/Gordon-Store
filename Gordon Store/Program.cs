@@ -117,7 +117,7 @@ class Program{
     int edicao;
     Console.WriteLine("------------ Editando produto -------------");
     Console.Write("Qual o id do produto a ser editado: ");
-    int id = int .Parse(Console.ReadLine());
+    int id = int.Parse(Console.ReadLine());
     Produto obj = Sistema.Atualização(id);
     Console.WriteLine("01 - Nome");
     Console.WriteLine("02 - Preço");

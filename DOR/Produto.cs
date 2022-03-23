@@ -1,4 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
+using System.Linq;
 
 public class Produto : IComparable<Produto>{
   
@@ -7,7 +13,12 @@ public class Produto : IComparable<Produto>{
   protected double Preco;
   protected string Estudio;
   protected int Qtd;
-  
+  protected int QtdPega;
+
+  public int qtdpega{
+    get{return QtdPega;}
+    set{if(value >= 0) QtdPega = value;}  
+  }
   public string nome {
     get => Nome;
     set => Nome = value;
@@ -45,7 +56,8 @@ public class Produto : IComparable<Produto>{
   }
 }
 
-class Jogo:Produto{
+public class Jogo:Produto{
+  public Jogo(){ }
   public Jogo(string nome, int id, double preco, string estudio, int qtd):base(nome, id, preco, estudio, qtd){}
   public override string ToString() {
     return $"Nome: {Nome} - ID: {Id} - Preço: {Preco:00.00} - Estúdio: {Estudio} - Estoque: {Qtd}";  
@@ -55,7 +67,7 @@ class Jogo:Produto{
   }  
 }
 
-class HQ:Produto{ 
+public class HQ:Produto{ 
   private int Edicao;
 
   public int edicao{
@@ -65,6 +77,7 @@ class HQ:Produto{
       if(value > -1)Edicao = value;
     }
   }
+  public HQ(){ }
   public HQ(string nome, int id, double preco, int edicao, string estudio, int qtd):base(nome, id, preco, estudio, qtd){
     this.edicao = edicao;
   }

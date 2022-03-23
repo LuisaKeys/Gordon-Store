@@ -12,24 +12,10 @@ class Usuario{
   private static int IDc;
   
   public static void UsuarioSalvar(){
-    Arquivo<List<Cliente>> a = new Arquivo<List<Cliente>>();
-    Arquivo<List<Carrinho>> b = new Arquivo<List<Carrinho>>();
-    Arquivo<int> c = new Arquivo<int>();
-    Arquivo<int> d = new Arquivo<int>();
-    a.Salvar("./Usuarios.xml", usuarios);
-    b.Salvar("./Carrinhos.xml", compra);
-    c.Salvar("./ID.xml", ID);
-    d.Salvar("./IDc.xml", IDc);
+    
   }
   public static void UsuarioAbrir(){
-    Arquivo<List<Cliente>> a = new Arquivo<List<Cliente>>();
-    Arquivo<List<Carrinho>> b = new Arquivo<List<Carrinho>>();
-    Arquivo<int> c = new Arquivo<int>();
-    Arquivo<int> d = new Arquivo<int>();
-    List<Carrinho> compra = b.Abrir("./Carrinhos.xml");
-    List<Cliente> usuarios = a.Abrir("./Usuarios.xml");
-    int ID = c.Abrir("./ID.xml");
-    int IDc = d.Abrir("./IDc.xml");
+    
   }
   public static void ListarCarrinho(){
     foreach(Carrinho a in compra){
