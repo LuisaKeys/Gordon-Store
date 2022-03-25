@@ -13,6 +13,14 @@ class Sistema{
   //private static Produto[] w = new Produto[prods.Count];
   private static int qtd = 0;
 
+  public static int Controle(int a){
+    for(int i = 0; i < prods.Count; i++){
+      if(prods[i].id == a){
+        return 1;
+      }
+    }
+    return 0;
+  }
   public static Produto ProdutoOriginal(string nome){
     foreach(Produto a in prods){
       if(a.nome == nome) return a;
@@ -61,10 +69,11 @@ class Sistema{
   }*/
   public static void Finalizar(){
     int aux = 0;
-    for(int i = 0; i < qtd; i++){
+    for(int i = 0; i < prods.Count; i++){
       if(prods[i] != null){
       if(prods[i].qtd == 0){
-         prods[i] = null;
+        Produto a = prods[i];
+         prods.Remove(a);
          aux = aux + 1;
       }
       }

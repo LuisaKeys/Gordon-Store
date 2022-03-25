@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 
-class Carrinho{
+public class Carrinho{
   private static List<Produto> cesta = new List<Produto>();
   private  int ID;
 

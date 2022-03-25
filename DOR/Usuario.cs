@@ -11,12 +11,6 @@ class Usuario{
   private static int ID;
   private static int IDc;
   
-  public static void UsuarioSalvar(){
-    
-  }
-  public static void UsuarioAbrir(){
-    
-  }
   public static void ListarCarrinho(){
     foreach(Carrinho a in compra){
       Console.WriteLine(a);
@@ -57,5 +51,37 @@ class Usuario{
       }
     }
     return 0;
-  }   
+  }
+  public static void ArquivoSalvar(){
+    Arquivo<List<Carrinho>> a = new Arquivo<List<Carrinho>>();
+    Arquivo<List<Cliente>> b = new Arquivo<List<Cliente>>();
+    Arquivo<int> c = new Arquivo<int>();
+    Arquivo<int> d = new Arquivo<int>();
+    a.Salvar("./Carrinhos.xml", compra);
+    b.Salvar("./Clientes.xml", usuarios);
+    c.Salvar("./IDs.xml", ID);
+    d.Salvar("./IDcs.xml", IDc);
+  }
+  public static void ArquivoAbrir(){
+    List<Carrinho> aux1 = new List<Carrinho>();
+    List<Cliente>  aux2 = new List<Cliente>();
+    int aux3;
+    int aux4;
+    Arquivo<List<Carrinho>> a = new Arquivo<List<Carrinho>>();
+    Arquivo<List<Cliente>> b = new Arquivo<List<Cliente>>();
+    Arquivo<int> c = new Arquivo<int>();
+    Arquivo<int> d = new Arquivo<int>();
+    aux1 = a.Abrir("./Carrinhos.xml");
+    aux2 = b.Abrir("./Clientes.xml");
+    aux3 = c.Abrir("./IDs.xml");
+    aux4 = d.Abrir("./IDcs.xml");
+    foreach(Carrinho a1 in aux1){
+      compra.Add(a1);
+    }
+    foreach(Cliente a2 in aux2){
+      usuarios.Add(a2);
+    }
+    ID = aux3;
+    IDc = aux4;
+  }
 }

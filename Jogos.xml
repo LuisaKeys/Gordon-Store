@@ -1,2 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfJogo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfJogo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Jogo>
+    <qtdpega>0</qtdpega>
+    <nome>mario</nome>
+    <id>2</id>
+    <preco>10</preco>
+    <estudio>nintendo</estudio>
+    <qtd>5</qtd>
+  </Jogo>
+  <Jogo>
+    <qtdpega>0</qtdpega>
+    <nome>sonic</nome>
+    <id>1</id>
+    <preco>10</preco>
+    <estudio>sega</estudio>
+    <qtd>5</qtd>
+  </Jogo>
+</ArrayOfJogo>
