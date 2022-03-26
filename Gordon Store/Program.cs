@@ -246,11 +246,11 @@ class Program{
   public static void ClienteListar(){
     Console.WriteLine("----------------- Clientes ativos -----------------");
     foreach(Cliente c in Usuario.ListarCliente()){
-      if(a is HQ) Console.WriteLine(Cliente.Descricao());
+       Console.WriteLine(Cliente.Descricao());
       Console.WriteLine("");  
     Console.WriteLine("-------------------------------------------------");
+    }
   }
-  
   //Cliente
   public static void MenuCliente(){
   int conta;
