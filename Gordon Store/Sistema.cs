@@ -97,9 +97,11 @@ class Sistema{
   return null;
   }
   public static Produto RevelaProduto(string a,int q){
+    Produto aux;
     for(int i = 0; i < qtd; i++){
       if(prods[i].nome == a){
-      Produto aux = prods[i];
+      aux = prods[i];
+      aux.qtdpega = q;  
       aux.qtd = aux.qtd - q; 
       return aux;  
       } 
@@ -107,9 +109,12 @@ class Sistema{
   return null;
 }
   public static void ReadicionarQtd(string a, int b){
-    for(int i = 0; i < qtd; i++){
+    Produto aux;
+    for(int i = 0; i < prods.Count; i++){
       if(prods[i].nome == a){
-        prods[i].qtd = prods[i].qtd + b;
+        aux = prods[i];
+        aux.qtdpega = aux.qtdpega - b;
+        aux.qtd = prods[i].qtd + b;
       }
     }
   }
@@ -119,13 +124,13 @@ class Sistema{
     List<Jogo> jogos = new List<Jogo>();
     List<HQ> HQS = new List<HQ>();
     Arquivo<List<Jogo>> a1 = new Arquivo<List<Jogo>>();
-    jogos = a1.Abrir("./Jogos.xml");
+    jogos = a1.Abrir("./Arquivos/Jogos.xml");
     
     Arquivo<List<HQ>> a2 = new Arquivo<List<HQ>>();
-    HQS = a2.Abrir("./HQS.xml");
+    HQS = a2.Abrir("./Arquivos/HQS.xml");
     
     Arquivo<int> a3 = new Arquivo<int>();
-    qtd = a3.Abrir("./qtd.xml");
+    qtd = a3.Abrir("./Arquivos/qtd.xml");
 
     foreach(Jogo a in jogos){
       prods.Add((a as Produto));
@@ -151,12 +156,12 @@ class Sistema{
     }
     
     Arquivo<int> a2 = new Arquivo<int>();
-    a2.Salvar("./qtd.xml", qtd);
+    a2.Salvar("./Arquivos/qtd.xml", qtd);
     
     Arquivo<List<Jogo>> a3 = new Arquivo<List<Jogo>>();    
-    a3.Salvar("./Jogos.xml", jogos);
+    a3.Salvar("./Arquivos/Jogos.xml", jogos);
     
     Arquivo<List<HQ>> a4 = new Arquivo<List<HQ>>();
-    a4.Salvar("./HQS.xml", HQS);
+    a4.Salvar("./Arquivos/HQS.xml", HQS);
   }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
 
-public class Cliente{
+public class Cliente : IComparable<Cliente>{
   private string Nome;
   private string Senha;
   private int ID;
@@ -28,5 +28,11 @@ public class Cliente{
   }
   public override string ToString(){
     return $"Nome:{Nome} - Senha:{Senha} - ID:{ID}";
+  }
+  public string Descricao(){
+    return $"Nome: {Nome} - ID: {ID}";
+  } 
+   public int CompareTo(Cliente obj){
+    return Nome.CompareTo(obj.Nome);
   }
 }

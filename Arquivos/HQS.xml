@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfHQ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HQ>
+    <qtdpega>0</qtdpega>
+    <nome>Superman</nome>
+    <id>2</id>
+    <preco>100</preco>
+    <estudio>DC</estudio>
+    <qtd>5</qtd>
+    <edicao>10</edicao>
+  </HQ>
+  <HQ>
+    <qtdpega>0</qtdpega>
+    <nome>Harleen</nome>
+    <id>3</id>
+    <preco>90</preco>
+    <estudio>DC</estudio>
+    <qtd>30</qtd>
+    <edicao>1</edicao>
+  </HQ>
+</ArrayOfHQ>

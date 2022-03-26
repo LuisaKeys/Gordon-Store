@@ -7,7 +7,7 @@ using System.Text;
 using System.Linq;
 
 public class Carrinho{
-  private static List<Produto> cesta = new List<Produto>();
+  private  List<Produto> cesta = new List<Produto>();
   private  int ID;
 
   public Carrinho(){}
@@ -35,11 +35,13 @@ public class Carrinho{
     HQ aux3;
     if(aux1 is Jogo){
     aux2 = new Jogo(aux1.nome, aux1.id, aux1.preco, aux1.estudio, qtd);
+      aux2.qtdpega = qtd;
       cesta.Add(aux2);
     }
     aux2 = null;
     if(aux1 is HQ){
     aux3 = new HQ(aux1.nome, aux1.id, aux1.preco,  (aux1 as HQ).edicao, aux1.estudio, qtd);
+      aux3.qtdpega = qtd;
     cesta.Add(aux3);
     }
     aux3 = null;
@@ -50,12 +52,14 @@ public class Carrinho{
       if((cesta[i] as Produto).nome == nome){
       if(cesta[i] is Jogo){
       (cesta[i] as Jogo).qtd = (cesta[i] as Jogo).qtd - qtd;
+      (cesta[i] as Jogo).qtdpega = (cesta[i] as Jogo).qtdpega - qtd; 
       if((cesta[i] as Jogo).qtd == 0){
           cesta.RemoveAt(i);
         }
       }
       if(cesta[i] is HQ){
         (cesta[i] as HQ).qtd = (cesta[i] as HQ).qtd - qtd;
+        (cesta[i] as HQ).qtdpega = (cesta[i] as HQ).qtdpega - qtd;
       if((cesta[i] as HQ).qtd == 0){
           cesta.RemoveAt(i);
         }
