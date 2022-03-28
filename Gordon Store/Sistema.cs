@@ -28,10 +28,10 @@ class Sistema{
     return null;
   }
   public static void ProdutoExcluir(int a){
-    foreach(Produto b in prods){
-    if(b.id == a){
+    for(int i = 0; i < prods.Count; i++){
+    if(prods[i].id == a){
     qtd = qtd - 1;  
-    prods.Remove(b);
+    prods.Remove(prods[i]);
     }
     }
     }
