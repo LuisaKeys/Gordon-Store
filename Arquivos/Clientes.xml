@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCliente xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Cliente>
+    <compra>
+      <id>1</id>
+      <produtos />
+    </compra>
+    <nome>kevin</nome>
+    <senha>10</senha>
+    <id>1</id>
+  </Cliente>
+  <Cliente>
+    <compra>
+      <id>2</id>
+      <produtos />
+    </compra>
+    <nome>gcjim</nome>
+    <senha>20</senha>
+    <id>2</id>
+  </Cliente>
+  <Cliente>
+    <compra>
+      <id>3</id>
+      <produtos />
+    </compra>
+    <nome>kevinmn</nome>
+    <senha>30</senha>
+    <id>3</id>
+  </Cliente>
+</ArrayOfCliente>
