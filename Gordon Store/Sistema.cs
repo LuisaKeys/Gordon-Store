@@ -30,10 +30,10 @@ class Sistema{
   public static void ProdutoExcluir(int a){
     foreach(Produto b in prods){
     if(b.id == a){
+    qtd = qtd - 1;  
     prods.Remove(b);
     }
     }
-    qtd = qtd - 1;
     }
   public static void InserirJogo(Jogo obj){
     prods.Add(obj);
@@ -68,17 +68,15 @@ class Sistema{
     prods.CopyTo(w);
   }*/
   public static void Finalizar(){
-    int aux = 0;
     for(int i = 0; i < prods.Count; i++){
       if(prods[i] != null){
       if(prods[i].qtd == 0){
         Produto a = prods[i];
          prods.Remove(a);
-         aux = aux + 1;
+         qtd = qtd - 1;
       }
       }
     }
-    qtd = qtd - aux;
     }
   public static Produto Atualização(int id){
     for(int i = 0; i < qtd; i++){
@@ -89,34 +87,31 @@ class Sistema{
     }
     return null;
   }
-  private static Produto MostrePosição(int id){
+  public static Produto MostrePosição(int id){
    for(int i = 0; i < qtd; i++){
      int a = prods[i].id;
      if(id == a) return prods[i]; 
    }
   return null;
   }
-  public static Produto RevelaProduto(string a,int q){
-    Produto aux;
-    for(int i = 0; i < qtd; i++){
-      if(prods[i].nome == a){
-      aux = prods[i];
-      aux.qtdpega = q;  
-      aux.qtd = aux.qtd - q; 
-      return aux;  
-      } 
-  }
-  return null;
-}
-  public static void ReadicionarQtd(string a, int b){
-    Produto aux;
+  public static int RevelaProduto(string a){
     for(int i = 0; i < prods.Count; i++){
       if(prods[i].nome == a){
-        aux = prods[i];
-        aux.qtdpega = aux.qtdpega - b;
-        aux.qtd = prods[i].qtd + b;
+      prods[i].qtd = prods[i].qtd - 1;  
+      return prods[i].id;  
+    } 
+  }
+  return 0;
+}
+  public static int ReadicionarQtd(string a){
+    for(int i = 0; i < prods.Count; i++){
+      if(prods[i].nome == a){
+        Produto aux = prods[i];
+        aux.qtd = prods[i].qtd + 1;
+        return aux.id;
       }
     }
+    return 0;
   }
   
   //arquivos

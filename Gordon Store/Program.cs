@@ -5,10 +5,12 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text;
 
+//LUISA LEMBRAR DE COLOCAR O TRY DE NOVO E CONTINUAR O LISTAR CLIENTES
+
 class Program{
-  private static int logado = 0;
-  private static int ID;
-  private static Carrinho aux;
+  private  static int logado = 0;
+  private  static int ID;
+  private  static Carrinho aux;
   public static void Main(){
     int opcao = 0;
     try{
@@ -57,7 +59,7 @@ class Program{
         Console.WriteLine("02 - Excluir Produto");
         Console.WriteLine("03 - Listar Produtos");
         Console.WriteLine("04 - Editar Produto");
-        Console.WriteLine("05 - Listar Clientes");
+        Console.WriteLine("05 - Listar Carrinho de usuarios");
         Console.WriteLine("00 - Finalizar programa");
         Console.WriteLine("-------------------------------------------------");
         Console.Write("escolha uma opção: ");
@@ -70,7 +72,7 @@ class Program{
             case 2: ProdutoExcluir(); break;
             case 3: ProdutoListar(); break;
             case 4: ProdutoAtualizar(); break;
-            case 5: ClienteListar();break;
+            case 5: Usuario.Compras(); break;    
           }
         }catch(Exception erro){
           opcaoA = -1;
@@ -87,7 +89,6 @@ class Program{
     string estudio;
     int qtd;
     int edicao;
-    try{
       Console.WriteLine("------------ Editando produto -------------");
       Console.Write("Qual o id do produto a ser editado: ");
       int id = int.Parse(Console.ReadLine());
@@ -156,16 +157,11 @@ class Program{
           break;
         }
       }
-    }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
-        }
     Console.WriteLine("-------------------------------------------------");
   }  
   public static void ProdutoInserir(){
     int id;
     int controle;
-    try{
       Console.WriteLine("--------------- Inserindo produto ---------------");
       Console.WriteLine("Seu produto é o que?(1 - Jogo/2 - HQ)");
       int escolha = int.Parse(Console.ReadLine()); 
@@ -213,10 +209,6 @@ class Program{
           Console.WriteLine("--------- Produto inserido com sucesso ----------");
          }
         }
-    }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
-        }
         Console.WriteLine("-------------------------------------------------");
   }
 
@@ -232,29 +224,15 @@ class Program{
   }
   
   public static void ProdutoExcluir() {
-    try{
       Console.WriteLine("----------------- Excluir produto ----------------");
       Console.Write("Informe o id do Produto que deseja excluir: ");
       int id = int.Parse(Console.ReadLine());
       Sistema.ProdutoExcluir(id);
       Console.WriteLine("-------- Operação realizada com sucesso --------");
-    }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
     }
-  }
-  public static void ClienteListar(){
-    Console.WriteLine("----------------- Clientes ativos -----------------");
-    foreach(Cliente c in Usuario.ListarCliente()){
-       Console.WriteLine(Cliente.Descricao());
-      Console.WriteLine("");  
-    Console.WriteLine("-------------------------------------------------");
-    }
-  }
   //Cliente
   public static void MenuCliente(){
   int conta;
-    try{
       Console.WriteLine("------- Bem-Vindo(a) a Loja Gordon Store -------");
       Console.WriteLine("Antes de continuarmos considere logar apertando 1");
       Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
@@ -265,13 +243,8 @@ class Program{
         case 1: Login(); break;
         case 2: Registro(); break;  
       }
-    }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
-    }
-}
+  }
 public static void Registro(){
-  try{
     Console.WriteLine("-------------------- Cadastro -------------------");
     Console.Write("Qual nome gostaria de ser chamado(a):");
     string n = Console.ReadLine();
@@ -280,13 +253,8 @@ public static void Registro(){
     string s = Console.ReadLine();
     Usuario.Cadastro(n,s);
     Console.WriteLine("-------------------------------------------------");
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
   }
-}  
 public static void Login(){
-  try{
     Console.WriteLine("-------------------- Login ---------------------");
     Console.Write("Nome:");
     string nome = Console.ReadLine();
@@ -300,12 +268,7 @@ public static void Login(){
       Console.WriteLine(Realmenudocliente());
     }
     if(entrar == 0) Console.WriteLine("Não existe essa conta");
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
-    }
-  Console.WriteLine("-------------------------------------------------");
-      
+  Console.WriteLine("-------------------------------------------------");  
 }
 public static int Realmenudocliente(){
   int escolha;
@@ -320,8 +283,8 @@ public static int Realmenudocliente(){
   Console.WriteLine("4 - Retirar Produto do carrinho");
   Console.WriteLine("5 - Finalizar compra");
   Console.WriteLine("6 - Finalizar programa (Você não está em uma matrix)");
+  Console.WriteLine("7 - Teste de aux");
   Console.Write("Opção escolhida: ");
-  try{
     error = true;  
     escolha = int.Parse(Console.ReadLine());
     Console.WriteLine("-------------------------------------------------");
@@ -332,18 +295,14 @@ public static int Realmenudocliente(){
       case 4: CarrinhoExcluir(); break;
       case 5: Finalizar(); error = false; break;
       case 6: logado = 0; ID = 0; error = false; break;
+      case 7: if(aux == null) Console.WriteLine("Vazio");else Console.WriteLine("To funcionando"); break;
     }
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
-  }
   }while(error);
   return 0;
 }
   return 0;
 }
 public static void Finalizar(){
-  try{
     Console.WriteLine("-------------- Finalizando compra --------------");
     Console.WriteLine("Deseja finalizar sua compra?");
     Console.WriteLine($"Você pagará: R${aux.CarrinhoSomar()}");
@@ -358,59 +317,21 @@ public static void Finalizar(){
     else {
       Console.WriteLine("Tudo bem, aproveite nossa loja.");
     }
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
   Console.WriteLine("-------------------------------------------------");
 }
-}
 public static void CarrinhoExcluir(){
-  int correto = 0;
-  Produto original;
-  try{
-    do{
       Console.Write("Coloque o nome do produto que deseja retirar do seu carrinho: ");
-      string excluído = Console.ReadLine();
-      Console.Write("Qual a quantidade que deseja remover: ");
-      int qtd = int.Parse(Console.ReadLine());
-      original = aux.ProdutoOriginal(excluído);  
-      if(qtd <= original.qtdpega && qtd > -1){  
-      aux.CarrinhoExcluir(excluído, qtd);
-        correto = 1;
-        original = null;
-      }else Console.WriteLine("Valor inválido");
-    }while(correto == 0);
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine(""); 
-}
-}
+      string excluído = Console.ReadLine();  
+      aux.CarrinhoExcluir(excluído);
+  }
 public static void CarrinhoSomar(){
   Console.WriteLine($"Seu Valor total a pagar é: R${aux.CarrinhoSomar()}");
 }
 public static void CarrinhoInserir(){
-  Produto original;
-  int correto = 0;
-  try{
-    do{
       Console.WriteLine("Qual produto gostaria de adicionar?(Escreva o nome corretamente)");
       string nome = Console.ReadLine();
-      original = Sistema.ProdutoOriginal(nome);
-      Console.WriteLine("Quantos desse produto você que levar?");
-      int qtd = int.Parse(Console.ReadLine());
-      if(qtd <= original.qtd && qtd > -1){
-       aux.CarrinhoInserir(nome, qtd);
-       correto = 1;
-       original = null; 
-      }else{
-      Console.WriteLine("Valor inválido");
-      }
-    }while(correto == 0);
-  }catch(Exception erro){
-          Console.WriteLine("Erro: " + erro.Message);
-        Console.WriteLine("");
+       aux.CarrinhoInserir(nome); 
   }
-}
 public static void CarrinhoListar(){
   Console.WriteLine("Esse são os produtos Pegos:");
     aux.CarrinhoListar();

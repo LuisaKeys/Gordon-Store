@@ -63,7 +63,7 @@ public class Jogo:Produto{
     return $"Nome: {Nome} - ID: {Id} - Preço: {Preco:00.00} - Estúdio: {Estudio} - Estoque: {Qtd}";  
   }
   public string Descricao(){
-    return $"--{Nome}(Jogo)--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Preço: {Preco:00.00}"+"\n"+$"Quantidade pega: {Qtd}";
+    return $"--{Nome}(Jogo)--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Preço: {Preco:00.00}";
   }  
 }
 
@@ -82,7 +82,7 @@ public class HQ:Produto{
     this.edicao = edicao;
   }
   public string Descricao(){
-    return $"--(HQ){Nome}--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Edição: {Edicao}"+"\n"+$"Preço: {Preco:00.00}"+"\n"+$"Quantidade pega: {Qtd}";
+    return $"--(HQ){Nome}--"+"\n"+$"Estúdio: {Estudio}"+"\n"+$"Edição: {Edicao}"+"\n"+$"Preço: {Preco:00.00}";
   }
   public override string ToString() {
     return $"Nome: {Nome} - ID: {Id} - Preço: {Preco:00.00} - Edição: #{Edicao} - Estúdio: {Estudio} - Estoque: {Qtd}";  

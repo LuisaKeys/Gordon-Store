@@ -3,11 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
-
-public class Cliente : IComparable<Cliente>{
+//colocar o carrinho do cliente aqui para o arquivo não da problema;
+public class Cliente{
   private string Nome;
   private string Senha;
   private int ID;
+  private Carrinho Compra;
+
+  public Carrinho compra{
+    set{Compra = value;}
+    get{return Compra;}  
+  }
   public string nome{
     set{if(value != null) Nome = value;}
     get{return Nome;}
@@ -28,11 +34,5 @@ public class Cliente : IComparable<Cliente>{
   }
   public override string ToString(){
     return $"Nome:{Nome} - Senha:{Senha} - ID:{ID}";
-  }
-  public string Descricao(){
-    return $"Nome: {Nome} - ID: {ID}";
   } 
-   public int CompareTo(Cliente obj){
-    return Nome.CompareTo(obj.Nome);
-  }
 }
