@@ -37,6 +37,7 @@
       <id>4</id>
       <produtos>
         <int>3</int>
+        <int>3</int>
       </produtos>
     </compra>
     <nome>Paula</nome>

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
-//colocar o carrinho do cliente aqui para o arquivo não da problema;
+
 public class Cliente{
   private string Nome;
   private string Senha;

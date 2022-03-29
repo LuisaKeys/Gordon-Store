@@ -16,12 +16,7 @@ public class Carrinho{
     ID = b;
     IDCliente = b;
   }
-  /*public  Produto ProdutoOriginal(string nome){
-    foreach(Produto a in cesta){
-      if(a.nome == nome) return a;
-    }
-    return null;
-  }*/
+  
   public override string ToString(){
     return $"Carrinho de ID:{ID}";
   }

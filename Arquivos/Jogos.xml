@@ -36,8 +36,8 @@
     <qtdpega>0</qtdpega>
     <nome>Sonic</nome>
     <id>1</id>
-    <preco>10</preco>
+    <preco>50</preco>
     <estudio>Sega</estudio>
-    <qtd>4</qtd>
+    <qtd>10</qtd>
   </Jogo>
 </ArrayOfJogo>

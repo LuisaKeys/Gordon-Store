@@ -7,7 +7,6 @@ using System.Text;
 
 class Usuario{
   private static List<Cliente> usuarios = new List<Cliente>();
-  //private  List<Carrinho> compra = new List<Carrinho>();
   private static int ID;
   private static int IDc;
 
@@ -53,21 +52,17 @@ class Usuario{
     return 0;
   }
   public static void ArquivoSalvar(){
-    //Arquivo<List<Carrinho>> a = new Arquivo<List<Carrinho>>();
     Arquivo<List<Cliente>> b = new Arquivo<List<Cliente>>();
     Arquivo<int> c = new Arquivo<int>();
     Arquivo<int> d = new Arquivo<int>();
-    //a.Salvar("./Arquivos/Carrinhos.xml", compra);
     b.Salvar("./Arquivos/Clientes.xml", usuarios);
     c.Salvar("./Arquivos/IDs.xml", ID);
     d.Salvar("./Arquivos/IDcs.xml", IDc);
   }
   public static void ArquivoAbrir(){
-    //Arquivo<List<Carrinho>> a = new Arquivo<List<Carrinho>>();
     Arquivo<List<Cliente>> b = new Arquivo<List<Cliente>>();
     Arquivo<int> c = new Arquivo<int>();
     Arquivo<int> d = new Arquivo<int>();
-    //compra = a.Abrir("./Arquivos/Carrinhos.xml");
     usuarios = b.Abrir("./Arquivos/Clientes.xml");
     ID = c.Abrir("./Arquivos/IDs.xml");
     IDc = d.Abrir("./Arquivos/IDcs.xml");

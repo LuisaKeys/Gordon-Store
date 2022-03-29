@@ -7,10 +7,7 @@ using System.Text;
 using System.Linq;
 
 class Sistema{
-  //private static List<Jogo> jogo = new List<Jogo>();
-  //private static List<HQ> hq = new List<HQ>();
   private static List<Produto> prods = new List<Produto>();
-  //private static Produto[] w = new Produto[prods.Count];
   private static int qtd = 0;
 
   public static int Controle(int a){
@@ -47,26 +44,6 @@ class Sistema{
     prods.Sort();
     return prods;
   } 
-  /*public static HQ C(int id) {
-    foreach(HQ obj in hq)
-      if (obj.id == id) return obj;
-    return null;  
-  }*/
-  /*public static Jogo A(int id) {
-    foreach(Jogo obj in jogo)
-      if (obj.id == id) return obj;
-    return null;  
-  }*/
-  /*public static Produto B(int id) {
-    foreach(Produto obj in prods)
-      if (obj.id == id) return obj;
-    return null;  
-  }*/
-  /*public static void UniaoProduto(){
-    prods.AddRange(hq);
-    prods.AddRange(jogo);
-    prods.CopyTo(w);
-  }*/
   public static void Finalizar(){
     for(int i = 0; i < prods.Count; i++){
       if(prods[i] != null){
@@ -133,16 +110,8 @@ class Sistema{
     foreach(HQ b in HQS){
       prods.Add((b as Produto));
     }
-    /*Arquivo<List<Jogo>> a1 = new Arquivo<List<Jogo>>();
-    jogo = a1.Abrir("./Jogos.xml");
-    
-    Arquivo<List<HQ>> a2 = new Arquivo<List<HQ>>();
-    hq = a2.Abrir("./HQs.xml");*/
-
   }
   public static void ArquivoSalvar() {
-    /*Arquivo<List<Produto>> a1 = new Arquivo<List<Produto>>();
-    a1.Salvar("./Produtos.xml", prods);*/
     List<Jogo> jogos = new List<Jogo>();
     List<HQ> HQS = new List<HQ>();
     foreach(Produto a in prods){
