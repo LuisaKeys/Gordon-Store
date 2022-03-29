@@ -33,6 +33,6 @@ public class Cliente{
     if(ID >= 0) this.ID = ID;
   }
   public override string ToString(){
-    return $"Nome:{Nome} - Senha:{Senha} - ID:{ID}";
+    return $"Nome:{Nome} - ID:{ID}";
   } 
 }

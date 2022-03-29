@@ -3,7 +3,10 @@
   <Cliente>
     <compra>
       <id>1</id>
-      <produtos />
+      <produtos>
+        <int>1</int>
+        <int>2</int>
+      </produtos>
     </compra>
     <nome>kevin</nome>
     <senha>10</senha>
@@ -12,7 +15,9 @@
   <Cliente>
     <compra>
       <id>2</id>
-      <produtos />
+      <produtos>
+        <int>2</int>
+      </produtos>
     </compra>
     <nome>gcjim</nome>
     <senha>20</senha>
@@ -26,5 +31,16 @@
     <nome>kevinmn</nome>
     <senha>30</senha>
     <id>3</id>
+  </Cliente>
+  <Cliente>
+    <compra>
+      <id>4</id>
+      <produtos>
+        <int>3</int>
+      </produtos>
+    </compra>
+    <nome>Paula</nome>
+    <senha>90</senha>
+    <id>4</id>
   </Cliente>
 </ArrayOfCliente>

@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text;
 using System.Linq;
-//muda a lista de cesta para uma list de inteiros, onde os inteiros serão os ids dos produtos comprados e mudar os métodos(dependendo o programa) para funcionar de acordo com o modelo que vamos colocar
+
 public class Carrinho{
   private  List<int> cesta = new List<int>();
   private  int ID;

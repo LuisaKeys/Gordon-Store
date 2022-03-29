@@ -2,10 +2,42 @@
 <ArrayOfJogo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Jogo>
     <qtdpega>0</qtdpega>
+    <nome>Alice madness returns</nome>
+    <id>5</id>
+    <preco>200</preco>
+    <estudio>Spícy Horse</estudio>
+    <qtd>9</qtd>
+  </Jogo>
+  <Jogo>
+    <qtdpega>0</qtdpega>
+    <nome>Donkey kong returns</nome>
+    <id>10</id>
+    <preco>200</preco>
+    <estudio>Nintendo</estudio>
+    <qtd>10</qtd>
+  </Jogo>
+  <Jogo>
+    <qtdpega>0</qtdpega>
+    <nome>God of war</nome>
+    <id>9</id>
+    <preco>150</preco>
+    <estudio>CAPCOM</estudio>
+    <qtd>10</qtd>
+  </Jogo>
+  <Jogo>
+    <qtdpega>0</qtdpega>
+    <nome>Overwatch 2 </nome>
+    <id>11</id>
+    <preco>150</preco>
+    <estudio>Blizzard</estudio>
+    <qtd>10</qtd>
+  </Jogo>
+  <Jogo>
+    <qtdpega>0</qtdpega>
     <nome>Sonic</nome>
     <id>1</id>
     <preco>10</preco>
     <estudio>Sega</estudio>
-    <qtd>5</qtd>
+    <qtd>4</qtd>
   </Jogo>
 </ArrayOfJogo>

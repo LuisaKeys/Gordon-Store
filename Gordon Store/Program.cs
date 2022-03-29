@@ -5,8 +5,6 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text;
 
-//LUISA LEMBRAR DE COLOCAR O TRY DE NOVO E CONTINUAR O LISTAR CLIENTES
-
 class Program{
   private  static int logado = 0;
   private  static int ID;
@@ -72,7 +70,8 @@ class Program{
             case 2: ProdutoExcluir(); break;
             case 3: ProdutoListar(); break;
             case 4: ProdutoAtualizar(); break;
-            case 5: Usuario.Compras(); break;    
+            case 5: Usuario.Compras(); break;
+            case 6: Usuario.UsuarioListar(); break;    
           }
         }catch(Exception erro){
           opcaoA = -1;
@@ -94,10 +93,10 @@ class Program{
       int id = int.Parse(Console.ReadLine());
       Produto obj = Sistema.Atualização(id);
       if(obj is Jogo){
-      Console.WriteLine("01 - Nome");
-      Console.WriteLine("02 - Preço");
-      Console.WriteLine("03 - Estúdio");
-      Console.WriteLine("04 - Quantidade");
+      Console.WriteLine("01 - Nome: ");
+      Console.WriteLine("02 - Preço: ");
+      Console.WriteLine("03 - Estúdio: ");
+      Console.WriteLine("04 - Quantidade: ");
       int entrada = int.Parse(Console.ReadLine());
         switch(entrada){
           case 1: 
@@ -116,18 +115,18 @@ class Program{
             obj.estudio = estudio;
             break;
           case 4: 
-            Console.Write("Digite a nova quantidade:");
+            Console.Write("Digite a nova quantidade: ");
             qtd = int.Parse(Console.ReadLine());
             obj.qtd = qtd;
             break;
         }
       }
     if(obj is HQ){
-      Console.WriteLine("01 - Nome");
-    Console.WriteLine("02 - Preço");
-    Console.WriteLine("03 - Estúdio");
-    Console.WriteLine("04 - Quantidade");
-    Console.WriteLine("05 - Edição");
+    Console.WriteLine("01 - Nome: ");
+    Console.WriteLine("02 - Preço: ");
+    Console.WriteLine("03 - Estúdio: ");
+    Console.WriteLine("04 - Quantidade: ");
+    Console.WriteLine("05 - Edição: ");
     int entrada = int.Parse(Console.ReadLine());
       switch(entrada){
         case 1: 
@@ -141,12 +140,12 @@ class Program{
           obj.preco = preco;
           break;
         case 3: 
-          Console.Write("Digite o novo estúdio:");
+          Console.Write("Digite o novo estúdio: ");
           estudio = Console.ReadLine();
           obj.estudio = estudio;
           break;
         case 4: 
-          Console.Write("Digite a nova quantidade:");
+          Console.Write("Digite a nova quantidade: ");
           qtd = int.Parse(Console.ReadLine());
           obj.qtd = qtd;
           break;
@@ -216,9 +215,7 @@ class Program{
   Console.WriteLine("----------- Lista dos Produtos Inseridos -----------");
     foreach(Produto a in Sistema.ListarProduto()){
       if(a is HQ) Console.WriteLine((a as HQ).ToString());
-      Console.WriteLine("");
       if(a is Jogo) Console.WriteLine((a as Jogo).ToString());
-      Console.WriteLine("");
     }
     Console.WriteLine("-------------------------------------------------");
   }
@@ -237,7 +234,7 @@ class Program{
       Console.WriteLine("Antes de continuarmos considere logar apertando 1");
       Console.WriteLine("Caso não tenha aperte 2 para fazer o cadastro");
       Console.WriteLine("-------------------------------------------------");
-      Console.Write("Qual sua opção: ");                
+      Console.Write("Opção: ");                
       conta = int.Parse(Console.ReadLine());
       switch(conta){
         case 1: Login(); break;
@@ -246,19 +243,19 @@ class Program{
   }
 public static void Registro(){
     Console.WriteLine("-------------------- Cadastro -------------------");
-    Console.Write("Qual nome gostaria de ser chamado(a):");
+    Console.Write("Qual nome gostaria de ser chamado(a): ");
     string n = Console.ReadLine();
     Console.WriteLine();
-    Console.Write("Qual séria sua senha:");
+    Console.Write("Crie uma senha: ");
     string s = Console.ReadLine();
     Usuario.Cadastro(n,s);
     Console.WriteLine("-------------------------------------------------");
   }
 public static void Login(){
     Console.WriteLine("-------------------- Login ---------------------");
-    Console.Write("Nome:");
+    Console.Write("Nome: ");
     string nome = Console.ReadLine();
-    Console.Write("Senha:");
+    Console.Write("Senha: ");
     string senha = Console.ReadLine();
     int entrar = Usuario.Login(nome, senha);
     if(entrar == 1){
@@ -267,7 +264,7 @@ public static void Login(){
       logado = 1;
       Console.WriteLine(Realmenudocliente());
     }
-    if(entrar == 0) Console.WriteLine("Não existe essa conta");
+    if(entrar == 0) Console.WriteLine("Conta inexistente");
   Console.WriteLine("-------------------------------------------------");  
 }
 public static int Realmenudocliente(){
@@ -275,7 +272,7 @@ public static int Realmenudocliente(){
   bool error = false;
   if(logado == 1){  
   do {
-  Console.WriteLine("-- Bem-Vindo(a) ao Gordon Store --");
+  Console.WriteLine("---------- Bem-Vindo(a) ao Gordon Store ----------");
   Console.WriteLine("Escolha a opção que deseja fazer:");
   Console.WriteLine("1 - Olhar os Produtos na loja");
   Console.WriteLine("2 - Adicionar o Produto ao carrinho");
@@ -283,7 +280,7 @@ public static int Realmenudocliente(){
   Console.WriteLine("4 - Retirar Produto do carrinho");
   Console.WriteLine("5 - Finalizar compra");
   Console.WriteLine("6 - Finalizar programa (Você não está em uma matrix)");
-  Console.WriteLine("7 - Teste de aux");
+  //Console.WriteLine("7 - Teste de aux");
   Console.Write("Opção escolhida: ");
     error = true;  
     escolha = int.Parse(Console.ReadLine());
@@ -295,7 +292,7 @@ public static int Realmenudocliente(){
       case 4: CarrinhoExcluir(); break;
       case 5: Finalizar(); error = false; break;
       case 6: logado = 0; ID = 0; error = false; break;
-      case 7: if(aux == null) Console.WriteLine("Vazio");else Console.WriteLine("To funcionando"); break;
+      //case 7: if(aux == null) Console.WriteLine("Vazio");else Console.WriteLine("To funcionando"); break;
     }
   }while(error);
   return 0;

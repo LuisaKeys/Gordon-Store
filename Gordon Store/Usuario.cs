@@ -11,6 +11,11 @@ class Usuario{
   private static int ID;
   private static int IDc;
 
+  public static void UsuarioListar(){
+    foreach(Cliente a in usuarios){
+      Console.WriteLine(a);
+    }
+  }
   public static void Compras(){
     foreach(Cliente a in usuarios){
       Console.WriteLine(a.compra);

@@ -2,11 +2,47 @@
 <ArrayOfHQ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <HQ>
     <qtdpega>0</qtdpega>
+    <nome>Harleen</nome>
+    <id>3</id>
+    <preco>50</preco>
+    <estudio>DC</estudio>
+    <qtd>2</qtd>
+    <edicao>1</edicao>
+  </HQ>
+  <HQ>
+    <qtdpega>0</qtdpega>
+    <nome>Homem-Aranha: de volta ao lar</nome>
+    <id>8</id>
+    <preco>60</preco>
+    <estudio>Marvel</estudio>
+    <qtd>10</qtd>
+    <edicao>1</edicao>
+  </HQ>
+  <HQ>
+    <qtdpega>0</qtdpega>
+    <nome>Liga da justiça sombria: guerra de apokolips</nome>
+    <id>6</id>
+    <preco>50</preco>
+    <estudio>DC</estudio>
+    <qtd>10</qtd>
+    <edicao>9</edicao>
+  </HQ>
+  <HQ>
+    <qtdpega>0</qtdpega>
     <nome>Superman</nome>
     <id>2</id>
     <preco>45</preco>
     <estudio>DC</estudio>
-    <qtd>5</qtd>
+    <qtd>3</qtd>
     <edicao>18</edicao>
+  </HQ>
+  <HQ>
+    <qtdpega>0</qtdpega>
+    <nome>Thor: Arauto do trovão</nome>
+    <id>7</id>
+    <preco>60</preco>
+    <estudio>Marvel</estudio>
+    <qtd>10</qtd>
+    <edicao>5</edicao>
   </HQ>
 </ArrayOfHQ>
